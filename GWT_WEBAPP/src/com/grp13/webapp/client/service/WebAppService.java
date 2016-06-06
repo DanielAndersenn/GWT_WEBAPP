@@ -5,5 +5,8 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 @RemoteServiceRelativePath("WebAppService")
 public interface WebAppService extends RemoteService {
+	
+	String sayHello(String name);
+	int addTwoNumbers(int num1, int num2);
 
 }

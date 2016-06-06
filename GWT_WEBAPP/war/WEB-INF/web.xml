@@ -6,6 +6,15 @@
          xmlns="http://java.sun.com/xml/ns/javaee">
 
   <!-- Servlets -->
+  <servlet>
+  	<servlet-name>WebAppServlet</servlet-name>
+  	<servlet-class>com.grp13.webapp.server.WebAppServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping> 
+  	<servlet-name>WebAppServlet</servlet-name>
+  	<url-pattern>/gwt_webapp/WebAppService</url-pattern>
+  </servlet-mapping>
   
   <!-- Default page to serve -->
   <welcome-file-list>
