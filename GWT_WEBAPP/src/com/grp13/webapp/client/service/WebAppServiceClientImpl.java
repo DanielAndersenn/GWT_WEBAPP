@@ -18,18 +18,7 @@ public class WebAppServiceClientImpl implements WebAppServiceClientInterface{
 		
 		this.maingui = new MainGUI(this);
 	}
-	
-	@Override
-	public void sayHello(String name) {
-		this.service.sayHello(name, new DefaultCallback());
-		
-	}
 
-	@Override
-	public void addTwoNumbers(int num1, int num2) {
-		this.service.addTwoNumbers(num1, num2, new DefaultCallback());
-		
-	}
 	
 	public MainGUI getMainGUI() {
 		return this.maingui;
@@ -47,17 +36,17 @@ public class WebAppServiceClientImpl implements WebAppServiceClientInterface{
 		public void onSuccess(Object result) {
 			
 			System.out.println("Response received");
+			String loginStatus = (String) result;
 			
-			if(result instanceof String) {
-				String greeting = (String) result;
-				maingui.updateLabel(greeting);
-			} else if(result instanceof Integer) {
-				int sum = (Integer) result;
-				maingui.updateSumLabel(sum);
-			}
-			
+			maingui.setLoginStatus(loginStatus);		
 			
 		}
+		
+	}
+
+	@Override
+	public void validateCredentials(String userID, String password) {
+		this.service.validateCredentials(userID, password, new DefaultCallback());
 		
 	}
 

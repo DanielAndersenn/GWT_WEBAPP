@@ -4,7 +4,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface WebAppServiceAsync {
 	
-	void sayHello(String name, AsyncCallback callback);
-	void addTwoNumbers(int num1, int num2, AsyncCallback callback);
+	void validateCredentials(String userID, String password, AsyncCallback callback);
 
 }
