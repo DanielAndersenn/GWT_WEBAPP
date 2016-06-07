@@ -4,6 +4,7 @@ import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.grp13.webapp.client.gui.MainGUI;
+import com.grp13.webapp.client.model.UserDTO;
 
 public class WebAppServiceClientImpl implements WebAppServiceClientInterface{
 	
@@ -36,9 +37,18 @@ public class WebAppServiceClientImpl implements WebAppServiceClientInterface{
 		public void onSuccess(Object result) {
 			
 			System.out.println("Response received");
-			String loginStatus = (String) result;
 			
-			maingui.setLoginStatus(loginStatus);		
+			if(result instanceof String)
+			{
+			String loginStatus = (String) result;				
+			maingui.setLoginStatus(loginStatus);
+			}
+			else if(result instanceof UserDTO)
+			{
+				UserDTO info = (UserDTO) result;
+				
+			}
+					
 			
 		}
 		
@@ -47,6 +57,13 @@ public class WebAppServiceClientImpl implements WebAppServiceClientInterface{
 	@Override
 	public void validateCredentials(String userID, String password) {
 		this.service.validateCredentials(userID, password, new DefaultCallback());
+		
+	}
+
+
+	@Override
+	public void getUserData(String userID) {
+		this.service.getUserData(userID, new DefaultCallback());
 		
 	}
 
