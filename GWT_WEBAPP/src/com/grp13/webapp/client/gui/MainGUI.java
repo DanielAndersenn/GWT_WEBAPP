@@ -28,11 +28,13 @@ public class MainGUI extends Composite {
 			
 		Label userID = new Label("User ID: ");
 		Label password = new Label("Password: ");
+		userID.setHeight("10px");
 		this.vPanel.setWidth("100%");
-		this.vPanel.setHeight("100%");
+		this.vPanel.setHeight("25%");
 		this.vPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		this.vPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
-		this.vPanel.setSpacing(2);
+		//this.vPanel.setCellHeight(userID, "20px");
+		//this.vPanel.setCellHeight(txt1, "20px");
 		
 		this.vPanel.add(userID);
 		
@@ -55,8 +57,8 @@ public class MainGUI extends Composite {
 				
 	}
 	
-	public void setLoginStatus(String greeting) {
-		this.resultLbl.setText(greeting);
+	public void setLoginStatus(String loginMessage) {
+		this.resultLbl.setText(loginMessage);
 	}
 	
 	

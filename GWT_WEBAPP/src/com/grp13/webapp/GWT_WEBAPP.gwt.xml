@@ -17,8 +17,8 @@
   <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
   <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
 
-  <servlet class="com.grp13.webapp.server.MySQLConnection" path="/MySQLConnection" />
-	
+  <servlet class="com.grp13.webapp.server.WebAppServiceImpl" path="/WebAppServiceImpl" />
+  
 
   <!-- Other module inherits                                      -->
 

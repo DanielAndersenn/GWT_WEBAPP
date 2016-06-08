@@ -29,24 +29,18 @@ public class WebAppServiceClientImpl implements WebAppServiceClientInterface{
 
 		@Override
 		public void onFailure(Throwable caught) {
-			System.out.println("An error has occured");
+			
+			maingui.setLoginStatus(caught.getMessage());
 			
 		}
 
 		@Override
 		public void onSuccess(Object result) {
 			
-			System.out.println("Response received");
+			boolean validated = (boolean) result;
 			
-			if(result instanceof String)
-			{
-			String loginStatus = (String) result;				
-			maingui.setLoginStatus(loginStatus);
-			}
-			else if(result instanceof UserDTO)
-			{
-				UserDTO info = (UserDTO) result;
-				
+			if(validated==true) {
+				maingui.setLoginStatus("ACCESS GRANTED!");
 			}
 					
 			
