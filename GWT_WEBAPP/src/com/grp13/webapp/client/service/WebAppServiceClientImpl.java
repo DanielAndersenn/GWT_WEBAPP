@@ -3,25 +3,26 @@ package com.grp13.webapp.client.service;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
-import com.grp13.webapp.client.gui.MainGUI;
-import com.grp13.webapp.client.model.UserDTO;
+import com.grp13.webapp.client.gui.LoginView;
 
 public class WebAppServiceClientImpl implements WebAppServiceClientInterface{
 	
 	private WebAppServiceAsync service;
-	private MainGUI maingui;
+	private LoginView maingui;
 	
 	public WebAppServiceClientImpl(String url) {
-		System.out.println(url);
 		this.service = GWT.create(WebAppService.class);
 		ServiceDefTarget endpoint = (ServiceDefTarget) this.service;
 		endpoint.setServiceEntryPoint(url);
 		
-		this.maingui = new MainGUI(this);
+		MenuView m = new MenuView(this);
+		RootPanel.get("nav").add(m);
+		
+		this.maingui = new LoginView(this);
 	}
 
 	
-	public MainGUI getMainGUI() {
+	public LoginView getLoginView() {
 		return this.maingui;
 	}
 	

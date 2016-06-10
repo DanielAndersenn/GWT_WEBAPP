@@ -9,6 +9,6 @@
 			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Daniel/OneDrive/2. Semester/02324 - Videregående Programmering/3 ugers/GWT/mysql-connector-java-5.1.39-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Daniel Andersen/OneDrive/2. Semester/02324 - Videregående Programmering/3 ugers/GWT/mysql-connector-java-5.1.39-bin.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

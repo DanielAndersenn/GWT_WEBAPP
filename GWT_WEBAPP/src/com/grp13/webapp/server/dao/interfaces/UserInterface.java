@@ -3,7 +3,6 @@ package com.grp13.webapp.server.dao.interfaces;
 import java.util.List;
 
 import com.grp13.webapp.client.model.UserDTO;
-import com.grp13.webapp.server.db.IDBController;
 import com.grp13.webapp.shared.DALException;
 
 public interface UserInterface {

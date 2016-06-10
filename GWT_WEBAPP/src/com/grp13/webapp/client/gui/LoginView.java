@@ -12,7 +12,7 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.grp13.webapp.client.service.WebAppServiceClientImpl;
 
-public class MainGUI extends Composite {
+public class LoginView extends Composite {
 
 	private VerticalPanel vPanel = new VerticalPanel();	
 	
@@ -22,7 +22,7 @@ public class MainGUI extends Composite {
 	
 	private WebAppServiceClientImpl serviceImpl;
 	
-	public MainGUI(WebAppServiceClientImpl serviceImpl) {
+	public LoginView(WebAppServiceClientImpl serviceImpl) {
 		initWidget(this.vPanel);
 		this.serviceImpl = serviceImpl;
 			
@@ -33,8 +33,6 @@ public class MainGUI extends Composite {
 		this.vPanel.setHeight("25%");
 		this.vPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		this.vPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
-		//this.vPanel.setCellHeight(userID, "20px");
-		//this.vPanel.setCellHeight(txt1, "20px");
 		
 		this.vPanel.add(userID);
 		
