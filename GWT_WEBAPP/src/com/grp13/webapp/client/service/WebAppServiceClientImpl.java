@@ -1,6 +1,7 @@
 package com.grp13.webapp.client.service;
 
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -12,7 +13,7 @@ import com.grp13.webapp.client.gui.MenuView;
 public class WebAppServiceClientImpl {
 	
 	private WebAppServiceAsync service;
-	ContentView contents = new ContentView(service);
+	ContentView contents;
 	
 	public WebAppServiceClientImpl(String url) {
 		this.service = GWT.create(WebAppService.class);
@@ -20,10 +21,13 @@ public class WebAppServiceClientImpl {
 		endpoint.setServiceEntryPoint(url);
 		
 		MenuView menu = new MenuView(this);
+		menu.setVisible(false);
 		
+		contents = new ContentView(this.service, menu, contents);		
 		
 		RootPanel.get("menu").add(menu);
 		RootPanel.get("content").add(contents);
+		
 		
 	}
 	
@@ -33,7 +37,7 @@ public class WebAppServiceClientImpl {
 
 
 	public void showUsers() {
-		// TODO Auto-generated method stub
+		contents.openShowUsersView();
 		
 	}
 

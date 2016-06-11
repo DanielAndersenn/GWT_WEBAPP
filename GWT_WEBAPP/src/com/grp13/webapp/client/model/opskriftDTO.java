@@ -1,6 +1,8 @@
 package com.grp13.webapp.client.model;
 
-public class opskriftDTO {
+import java.io.Serializable;
+
+public class opskriftDTO implements Serializable{
 
 	private int opskriftID;
 	private int medarbejderID;

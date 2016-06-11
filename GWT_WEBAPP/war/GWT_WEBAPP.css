@@ -35,3 +35,24 @@ footer {
 	text-align: center;
 	padding: 5px;
 }
+
+/* flextable styles */
+.FlexTable {
+	border-top: thin solid #444444;
+	border-left: thin solid #444444;
+	border-right: thin solid #111111;
+	border-bottom: thin solid #111111;
+	table-layout: fixed;
+	width: 400px; 
+}
+
+.FlexTable-Header {
+	font-weight: bold;
+}
+
+/** Example rules used by the template application (remove for your app) */
+/* used for all GWT text boxes */
+.gwt-TextBox {
+	font-size: 10pt;
+	height: 1em;
+}

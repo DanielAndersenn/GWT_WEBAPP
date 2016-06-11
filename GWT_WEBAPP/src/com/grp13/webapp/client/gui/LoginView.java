@@ -17,6 +17,8 @@ import com.grp13.webapp.client.service.WebAppServiceAsync;
 public class LoginView extends Composite {
 
 	private VerticalPanel vPanel = new VerticalPanel();	
+	MenuView menu;
+	ContentView contents;
 	
 	private TextBox txt1;
 	private Label resultLbl;
@@ -24,9 +26,11 @@ public class LoginView extends Composite {
 	
 	private WebAppServiceAsync service;
 	
-	public LoginView(WebAppServiceAsync service) {
+	public LoginView(WebAppServiceAsync service, MenuView menu, ContentView contents) {
 		initWidget(this.vPanel);
+		this.contents = contents;
 		this.service = service;
+		this.menu = menu;
 			
 		Label userID = new Label("User ID: ");
 		Label password = new Label("Password: ");
@@ -46,7 +50,7 @@ public class LoginView extends Composite {
 		this.vPanel.add(passwordBox);
 		
 		Button login = new Button("Log in");
-		login.addClickHandler(new LoginClickHandler());
+		login.addClickHandler(new loginClickHandler());
 		this.vPanel.add(login);
 		
 		this.resultLbl = new Label("Login status: ");
@@ -55,29 +59,39 @@ public class LoginView extends Composite {
 	}
 	
 	public void setLoginStatus(String loginMessage) {
+		
 		this.resultLbl.setText(loginMessage);
 	}
 	
 	
-	private class LoginClickHandler implements ClickHandler {
+	
+	private class loginClickHandler implements ClickHandler {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			System.out.println("Klikker vi?????");
 			String userID = txt1.getText();
 			String password = passwordBox.getText();
 			
-			service.validateCredentials(userID, password, new AsyncCallback<Boolean>() {
-				@Override
-				public void onFailure(Throwable caught) {
-					setLoginStatus("ACCESS DENIED!");
-				}
+			service.validateCredentials(userID, password, new loginCallback());
+			
+		}
+		
+	}
+	
+	private class loginCallback implements AsyncCallback<Boolean> {
 
-				@Override
-				public void onSuccess(Boolean result) {
-					setLoginStatus("ACCESS GRANTED");
-				}
-			});
+		@Override
+		public void onFailure(Throwable caught) {
+			menu.setVisible(false);
+			setLoginStatus("ACCESS DENIED!");
+			
+		}
+
+		@Override
+		public void onSuccess(Boolean result) {
+			menu.setVisible(true);
+			setLoginStatus("ACCESS GRANTED!");
+			contents.openShowUsersView();
 			
 		}
 		

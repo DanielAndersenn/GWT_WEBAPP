@@ -49,8 +49,7 @@ public class MSQLDBController implements IDBController {
 
 	@Override
 	public List<UserDTO> getUserList() throws DALException {
-		// TODO Auto-generated method stub
-		return null;
+		return userDAO.getUserList();
 	}
 
 	@Override
@@ -67,13 +66,12 @@ public class MSQLDBController implements IDBController {
 
 	@Override
 	public boolean validateUser(String userID, String password) throws AccessDeniedException{
+		System.out.println("validateUser START");
 		boolean userValid = false;
 		String realPass = "";
 		String sql = "SELECT * FROM user WHERE user_ID =" + userID;
 		
 		try{
-			
-			System.out.println("Er vi her?????????????????");
 			stm = conn.createStatement();
 			ResultSet rs = stm.executeQuery(sql);
 			if(rs.next()) {
@@ -90,6 +88,8 @@ public class MSQLDBController implements IDBController {
 		if(password.equals(realPass)) userValid = true;
 		
 		if (!userValid) throw new AccessDeniedException();
+		
+		System.out.println("validateUser END");
 		return userValid;
 	}
 
