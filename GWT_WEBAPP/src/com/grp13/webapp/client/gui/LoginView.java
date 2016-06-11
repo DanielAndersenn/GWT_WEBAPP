@@ -2,6 +2,8 @@ package com.grp13.webapp.client.gui;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
@@ -10,7 +12,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.grp13.webapp.client.service.WebAppServiceClientImpl;
+import com.grp13.webapp.client.service.WebAppServiceAsync;
 
 public class LoginView extends Composite {
 
@@ -20,17 +22,14 @@ public class LoginView extends Composite {
 	private Label resultLbl;
 	private PasswordTextBox passwordBox;
 	
-	private WebAppServiceClientImpl serviceImpl;
+	private WebAppServiceAsync service;
 	
-	public LoginView(WebAppServiceClientImpl serviceImpl) {
+	public LoginView(WebAppServiceAsync service) {
 		initWidget(this.vPanel);
-		this.serviceImpl = serviceImpl;
+		this.service = service;
 			
 		Label userID = new Label("User ID: ");
 		Label password = new Label("Password: ");
-		userID.setHeight("10px");
-		this.vPanel.setWidth("100%");
-		this.vPanel.setHeight("25%");
 		this.vPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		this.vPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 		
@@ -64,13 +63,27 @@ public class LoginView extends Composite {
 
 		@Override
 		public void onClick(ClickEvent event) {
+			System.out.println("Klikker vi?????");
 			String userID = txt1.getText();
 			String password = passwordBox.getText();
-			serviceImpl.validateCredentials(userID, password);
+			
+			service.validateCredentials(userID, password, new AsyncCallback<Boolean>() {
+				@Override
+				public void onFailure(Throwable caught) {
+					setLoginStatus("ACCESS DENIED!");
+				}
+
+				@Override
+				public void onSuccess(Boolean result) {
+					setLoginStatus("ACCESS GRANTED");
+				}
+			});
 			
 		}
 		
 	}
+	
+	
 	
 	
 }

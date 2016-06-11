@@ -3,63 +3,86 @@ package com.grp13.webapp.client.service;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.Widget;
+import com.grp13.webapp.client.gui.ContentView;
 import com.grp13.webapp.client.gui.LoginView;
+import com.grp13.webapp.client.gui.MenuView;
 
-public class WebAppServiceClientImpl implements WebAppServiceClientInterface{
+public class WebAppServiceClientImpl {
 	
 	private WebAppServiceAsync service;
-	private LoginView maingui;
+	ContentView contents = new ContentView(service);
 	
 	public WebAppServiceClientImpl(String url) {
 		this.service = GWT.create(WebAppService.class);
 		ServiceDefTarget endpoint = (ServiceDefTarget) this.service;
 		endpoint.setServiceEntryPoint(url);
 		
-		MenuView m = new MenuView(this);
-		RootPanel.get("nav").add(m);
+		MenuView menu = new MenuView(this);
 		
-		this.maingui = new LoginView(this);
-	}
-
-	
-	public LoginView getLoginView() {
-		return this.maingui;
+		
+		RootPanel.get("menu").add(menu);
+		RootPanel.get("content").add(contents);
+		
 	}
 	
-	private class DefaultCallback implements AsyncCallback {
-
-		@Override
-		public void onFailure(Throwable caught) {
-			
-			maingui.setLoginStatus(caught.getMessage());
-			
-		}
-
-		@Override
-		public void onSuccess(Object result) {
-			
-			boolean validated = (boolean) result;
-			
-			if(validated==true) {
-				maingui.setLoginStatus("ACCESS GRANTED!");
-			}
-					
-			
-		}
-		
+	public void run() {
+		contents.openLoginView();
 	}
 
-	@Override
-	public void validateCredentials(String userID, String password) {
-		this.service.validateCredentials(userID, password, new DefaultCallback());
+
+	public void showUsers() {
+		// TODO Auto-generated method stub
 		
 	}
 
 
-	@Override
-	public void getUserData(String userID) {
-		this.service.getUserData(userID, new DefaultCallback());
+	public void addUser() {
+		// TODO Auto-generated method stub
 		
+	}
+
+
+	public void editUser() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void deleteUser() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void showRecipes() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void addRecipe() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void deleteRecipe() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void showSteps() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public Widget getContentView() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

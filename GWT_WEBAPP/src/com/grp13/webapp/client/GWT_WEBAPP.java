@@ -12,7 +12,8 @@ public class GWT_WEBAPP implements EntryPoint {
 	{
 		
 		WebAppServiceClientImpl clientImpl = new WebAppServiceClientImpl(GWT.getModuleBaseURL() + "WebAppService");
-		RootPanel.get("section").add(clientImpl.getLoginView());
+
+		clientImpl.run();
 	}
 
 }
