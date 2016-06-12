@@ -63,11 +63,10 @@ public class UserImplementation implements UserInterface{
 		try {
 			stmt = conn.prepareCall(cmd);
 			
-			stmt.setInt(1, user.getUserID());
-			stmt.setString(2, user.getName());
-			stmt.setString(3, user.getInitials());
-			stmt.setString(4, user.getPassword());
-			stmt.setLong(5, user.getRoleID());
+			stmt.setString(1, user.getName());
+			stmt.setString(2, user.getInitials());
+			stmt.setString(3, user.getPassword());
+			stmt.setLong(4, user.getRoleID());
 			stmt.registerOutParameter(5, java.sql.Types.INTEGER);
 			stmt.registerOutParameter(6, java.sql.Types.VARCHAR);
 			stmt.registerOutParameter(7, java.sql.Types.SMALLINT);
@@ -96,10 +95,11 @@ public class UserImplementation implements UserInterface{
 		try {
 			stmt = conn.prepareCall(cmd);
 			
-			stmt.setString(1, user.getName());
-			stmt.setString(2, user.getInitials());
-			stmt.setString(3, user.getPassword());
-			stmt.setLong(4, user.getRoleID());
+			stmt.setInt(1, user.getUserID());
+			stmt.setString(2, user.getName());
+			stmt.setString(3, user.getInitials());
+			stmt.setString(4, user.getPassword());
+			stmt.setLong(5, user.getRoleID());
 			stmt.registerOutParameter(5, java.sql.Types.INTEGER);
 			stmt.registerOutParameter(6, java.sql.Types.VARCHAR);
 			stmt.registerOutParameter(7, java.sql.Types.SMALLINT);
