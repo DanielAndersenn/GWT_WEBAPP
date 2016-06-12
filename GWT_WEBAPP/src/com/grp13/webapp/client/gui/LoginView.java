@@ -42,6 +42,7 @@ public class LoginView extends Composite {
 		this.txt1 = new TextBox();
 		txt1.setName("User ID");
 		txt1.setTitle("USER_ID");
+		txt1.setHeight("23px");
 		this.vPanel.add(txt1);
 		
 		this.vPanel.add(password);

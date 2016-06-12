@@ -34,5 +34,11 @@ public class ContentView extends Composite{
 		contents.add(buView);
 		
 	}
+	
+	public void openAddUserView() {
+		contents.clear();
+		AddUserView auView = new AddUserView(service);
+		contents.add(auView);
+	}
 
 }

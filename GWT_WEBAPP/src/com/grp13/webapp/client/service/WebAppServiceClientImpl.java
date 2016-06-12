@@ -43,7 +43,7 @@ public class WebAppServiceClientImpl {
 
 
 	public void addUser() {
-		// TODO Auto-generated method stub
+		contents.openAddUserView();
 		
 	}
 
