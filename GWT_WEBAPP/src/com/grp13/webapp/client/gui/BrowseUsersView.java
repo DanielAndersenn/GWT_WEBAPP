@@ -84,8 +84,7 @@ public class BrowseUsersView extends Composite{
 				t.setText(i+1, 0, "" + result.get(i).getUserID());
 				t.setText(i+1, 1, result.get(i).getName());
 				t.setText(i+1, 2, "" + result.get(i).getInitials());
-				t.setText(i+1, 3, "" + result.get(i).getRoleID());
-				
+				t.setText(i+1, 3, "" + result.get(i).getRoleID());	
 			}
 			
 		}
@@ -104,9 +103,15 @@ public class BrowseUsersView extends Composite{
 		public void onSuccess(Object result) {
 			
 			Window.alert("User with ID: " + idToDelete.getText() + " has been deleted.");
+			t.removeRow(t.getRowCount()-1);
+			reloadFlexTable();
 			
 		}
 		
+	}
+	
+	public void reloadFlexTable() {
+		service.getUsers(new getUsersCallback());
 	}
 	
 	

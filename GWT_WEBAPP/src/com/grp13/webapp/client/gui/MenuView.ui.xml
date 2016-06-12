@@ -3,22 +3,12 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<g:HTMLPanel>
 		<g:VerticalPanel>
-			<g:Hyperlink text="Show users" targetHistoryToken="newHistoryToken"
-				ui:field="show_users" />
-			<g:Hyperlink text="Add user" targetHistoryToken="newHistoryToken"
-				ui:field="add_user" />
-			<g:Hyperlink text="Edit Uuser" targetHistoryToken="newHistoryToken"
-				ui:field="edit_user" />
-			<g:Hyperlink text="Delete user" targetHistoryToken="newHistoryToken"
-				ui:field="delete_user" />
-			<g:Hyperlink text="Show recipes" targetHistoryToken="newHistoryToken"
-				ui:field="show_recipes" />
-			<g:Hyperlink text="Add recipe" targetHistoryToken="newHistoryToken"
+			<g:Hyperlink text="User admin" 
+				ui:field="user_administration" />
+			<g:Hyperlink text="Recipe list" 
+				ui:field="recipe_list" />
+			<g:Hyperlink text="Add recipe" 
 				ui:field="add_recipe" />
-			<g:Hyperlink text="Delete recipe" targetHistoryToken="newHistoryToken"
-				ui:field="delete_recipe" />
-			<g:Hyperlink text="Show steps" targetHistoryToken="newHistoryToken"
-				ui:field="show_steps" />
 		</g:VerticalPanel>
 
 	</g:HTMLPanel>

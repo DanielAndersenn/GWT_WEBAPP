@@ -9,7 +9,7 @@
 			<g:FlexTable ui:field="t" styleName="FlexTable"/>
 			<g:HorizontalPanel> 
 			<g:Label ui:field="deleteLabel" text="Enter id of user to delete: ">  </g:Label>
-			<g:TextBox ui:field="idToDelete"> </g:TextBox>
+			<g:TextBox ui:field="idToDelete" height="23px"> </g:TextBox>
 			<g:Button ui:field="deleteUser">Delete</g:Button>
 			</g:HorizontalPanel>
 		</g:VerticalPanel>
