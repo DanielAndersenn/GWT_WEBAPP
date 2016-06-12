@@ -59,7 +59,7 @@ public class MSQLDBController implements IDBController {
 
 	@Override
 	public boolean updateUser(UserDTO user) throws DALException {
-		return false;
+		return userDAO.updateUser(user);
 
 	}
 
