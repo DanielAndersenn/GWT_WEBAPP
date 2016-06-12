@@ -45,5 +45,26 @@ public class WebAppServiceImpl extends RemoteServiceServlet implements WebAppSer
 		return uList;
 	}
 
+
+	@Override
+	public boolean addUser() throws DALException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean editUser() throws DALException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean deleteUser() throws DALException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 }
