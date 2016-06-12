@@ -16,11 +16,11 @@
 			</g:HorizontalPanel>
 			<g:HorizontalPanel>
 				<g:Label text="Password" width="100px" height="23px"/>
-				<g:TextBox height="23px" width="30px" alignment="LEFT" ui:field="password"/>
+				<g:TextBox height="23px" width="" alignment="LEFT" ui:field="password"/>
 			</g:HorizontalPanel>
 			<g:HorizontalPanel>
 				<g:Label text="Rolle ID" width="100px"/>
-				<g:TextBox height="23px" width="" alignment="LEFT" ui:field="role_ID"/>
+				<g:TextBox height="23px" width="30px" alignment="LEFT" ui:field="role_ID"/>
 			</g:HorizontalPanel>
 			<g:Button ui:field="save" enabled="true">Add</g:Button>
 		</g:VerticalPanel>
