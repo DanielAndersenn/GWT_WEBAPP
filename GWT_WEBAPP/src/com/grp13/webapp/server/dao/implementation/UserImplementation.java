@@ -57,7 +57,7 @@ public class UserImplementation implements UserInterface{
 
 	@Override
 	public void createUser(UserDTO user) throws DALException {
-		System.out.println("Create User Started");
+		System.out.println("createUser START");
 		CallableStatement stmt = null;
 		String cmd = "CALL InsertUser(?, ?, ?, ?, ?, ?, ?)";
 		try {
@@ -78,16 +78,17 @@ public class UserImplementation implements UserInterface{
 			SQLErr = stmt.getInt(7);
 			
 			System.out.println("var returnMsg: " + returnMsg + " var SQLMsg: " + SQLMsg + " var SQLErr: " + SQLErr);
-			System.out.println("Create User Ended");
+			System.out.println("createUser END");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("Create User Failed");
+			System.out.println("createUser FAIL");
 		}		
 	}
 
 	@Override
 	public void updateUser(UserDTO user) throws DALException {
+		System.out.println("updateUser START");
 		CallableStatement stmt = null;
 		String cmd = "CALL UpdateUser(?, ?, ?, ?, ?, ?, ?, ?)";
 		
@@ -110,14 +111,17 @@ public class UserImplementation implements UserInterface{
 			SQLErr = stmt.getInt(8);
 			
 			System.out.println("var returnMsg: " + returnMsg + " var SQLMsg: " + SQLMsg + " var SQLErr: " + SQLErr);
+			System.out.println("updateUser END");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.out.println("updateUser FAIL");
 		}	
 	}
 
 	@Override
 	public void deleteUser(int a) throws DALException {
+		System.out.println("deleteUser START");
 		CallableStatement stmt = null;
 		String cmd = "CALL DeleteUser(?, ?, ?, ?)";
 		
@@ -136,9 +140,11 @@ public class UserImplementation implements UserInterface{
 			SQLErr = stmt.getInt(4);
 			
 			System.out.println("var returnMsg: " + returnMsg + " var SQLMsg: " + SQLMsg + " var SQLErr: " + SQLErr);
+			System.out.println("deleteUser END");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.out.println("deleteUser FAIL");
 		}
 	}
 
