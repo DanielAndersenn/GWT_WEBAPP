@@ -37,13 +37,7 @@ public class WebAppServiceClientImpl {
 
 
 	public void showUsers() {
-		contents.openShowUsersView();
-		
-	}
-
-
-	public void addUser() {
-		contents.openAddUserView();
+		contents.openUserAdministrationView();
 		
 	}
 

@@ -92,7 +92,7 @@ public class LoginView extends Composite {
 		public void onSuccess(Boolean result) {
 			menu.setVisible(true);
 			setLoginStatus("ACCESS GRANTED!");
-			contents.openShowUsersView();
+			contents.openUserAdministrationView();
 			
 		}
 		

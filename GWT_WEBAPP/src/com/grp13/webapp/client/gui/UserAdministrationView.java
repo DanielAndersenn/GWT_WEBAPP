@@ -22,9 +22,9 @@ import com.grp13.webapp.client.service.WebAppServiceAsync;
 import com.grp13.webapp.shared.DALException;
 
 
-public class BrowseUsersView extends Composite{
+public class UserAdministrationView extends Composite{
 
-	private static BrowseUsersView1UiBinder uiBinder = GWT.create(BrowseUsersView1UiBinder.class);
+	private static UserAdministrationView1UiBinder uiBinder = GWT.create(UserAdministrationView1UiBinder.class);
 	
 	//Flextable containing userlist
 	@UiField FlexTable t;
@@ -45,10 +45,10 @@ public class BrowseUsersView extends Composite{
 	
 	WebAppServiceAsync service;
 	
-	interface BrowseUsersView1UiBinder extends UiBinder<Widget, BrowseUsersView> {
+	interface UserAdministrationView1UiBinder extends UiBinder<Widget, UserAdministrationView> {
 	}
 	
-	public BrowseUsersView(WebAppServiceAsync service) {
+	public UserAdministrationView(WebAppServiceAsync service) {
 		
 		this.service = service;
 		initWidget(uiBinder.createAndBindUi(this));
@@ -69,7 +69,6 @@ public class BrowseUsersView extends Composite{
 		
 		//Format add user panel
 		userID.setReadOnly(true);
-		password.setValue("Password");
 		
 		//Call to populate flextable on load
 		service.getUsers(new getUsersCallback());			
@@ -134,7 +133,6 @@ public class BrowseUsersView extends Composite{
 
 		@Override
 		public void onSuccess(Object result) {
-			
 			Window.alert("User with ID: " + idToDelete.getText() + " has been deleted.");
 			t.removeRow(t.getRowCount()-1);
 			reloadFlexTable();
@@ -153,7 +151,14 @@ public class BrowseUsersView extends Composite{
 
 		@Override
 		public void onSuccess(Object result) {
+			
 			Window.alert("User added!");
+			name.setValue("");
+			initials.setValue("");
+			roleID.setValue("");
+			password.setValue("");
+			t.insertRow(t.getRowCount()-1);
+			reloadFlexTable();
 			
 		}
 		

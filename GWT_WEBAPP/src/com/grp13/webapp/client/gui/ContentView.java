@@ -28,17 +28,11 @@ public class ContentView extends Composite{
 		contents.add(loginView);
 	}
 
-	public void openShowUsersView() {
+	public void openUserAdministrationView() {
 		contents.clear();
-		BrowseUsersView buView = new BrowseUsersView(service);
+		UserAdministrationView buView = new UserAdministrationView(service);
 		contents.add(buView);
 		
-	}
-	
-	public void openAddUserView() {
-		contents.clear();
-		AddUserView auView = new AddUserView(service);
-		contents.add(auView);
 	}
 
 }
