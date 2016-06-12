@@ -12,7 +12,9 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.grp13.webapp.client.model.UserDTO;
@@ -24,7 +26,19 @@ public class BrowseUsersView extends Composite{
 
 	private static BrowseUsersView1UiBinder uiBinder = GWT.create(BrowseUsersView1UiBinder.class);
 	
+	//Flextable containing userlist
 	@UiField FlexTable t;
+	
+	//Add user panel
+	@UiField HorizontalPanel addPanel;
+	@UiField TextBox userID;
+	@UiField TextBox name;
+	@UiField TextBox initials;
+	@UiField TextBox roleID;
+	@UiField PasswordTextBox password;
+	@UiField Button addUser;
+	
+	//Delete user panel
 	@UiField Button deleteUser;
 	@UiField TextBox idToDelete;
 	@UiField Label deleteLabel;
@@ -38,7 +52,8 @@ public class BrowseUsersView extends Composite{
 		
 		this.service = service;
 		initWidget(uiBinder.createAndBindUi(this));
-
+		
+		//Format flex table
 		t.getFlexCellFormatter().setWidth(0, 0, "50px");
 		t.getFlexCellFormatter().setWidth(0, 1, "200px");
 		t.getFlexCellFormatter().setWidth(0, 2, "100px");
@@ -46,15 +61,18 @@ public class BrowseUsersView extends Composite{
 
 		t.getRowFormatter().addStyleName(0,"FlexTable-Header");
 
-		// set headers in flextable
+		//Set headers in flextable
 		t.setText(0, 0, "Id");
 		t.setText(0, 1, "Navn");
 		t.setText(0, 2, "Initialer");
 		t.setText(0, 3, "Rolle ID");
 		
-		service.getUsers(new getUsersCallback());
-				
-				
+		//Format add user panel
+		userID.setReadOnly(true);
+		password.setValue("Password");
+		
+		//Call to populate flextable on load
+		service.getUsers(new getUsersCallback());			
 		
 	}
 	
@@ -63,6 +81,21 @@ public class BrowseUsersView extends Composite{
 	
 	try {
 		service.deleteUser(Integer.parseInt(idToDelete.getText()), new deleteUserCallback());
+	} catch (DALException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	}
+	
+	@UiHandler("addUser")
+	void onAddClick(ClickEvent event) {
+	
+	//Create UserDTO object from fieldvalues
+	UserDTO newUser = new UserDTO(1, name.getText(), initials.getText(), password.getText(), Integer.parseInt(roleID.getText()));
+	
+	try {
+		service.addUser(newUser, new addUserCallback());
 	} catch (DALException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -105,6 +138,22 @@ public class BrowseUsersView extends Composite{
 			Window.alert("User with ID: " + idToDelete.getText() + " has been deleted.");
 			t.removeRow(t.getRowCount()-1);
 			reloadFlexTable();
+			
+		}
+		
+	}
+	
+	private class addUserCallback implements AsyncCallback {
+
+		@Override
+		public void onFailure(Throwable caught) {
+			Window.alert("User not added. Error msg: " + caught.getMessage());
+			
+		}
+
+		@Override
+		public void onSuccess(Object result) {
+			Window.alert("User added!");
 			
 		}
 		
