@@ -68,7 +68,7 @@ public class WebAppServiceImpl extends RemoteServiceServlet implements WebAppSer
 			dbcontroller.deleteUser(user_ID);
 		}catch(DALException e){
 			
-		throw new DALException("Lol");
+		throw new DALException(e.getMessage());
 		
 		}
 	}

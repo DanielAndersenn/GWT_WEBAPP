@@ -147,7 +147,7 @@ public class UserImplementation implements UserInterface{
 		}
 
 		
-		if(returnMsg != 1) throw new DALException("deleteUser fejlede !!!");
+		if(returnMsg != 1) throw new DALException(SQLMsg);
 			
 	}
 }
