@@ -8,6 +8,7 @@ import com.grp13.webapp.server.dao.interfaces.UserInterface;
 import com.grp13.webapp.shared.AccessDeniedException;
 import com.grp13.webapp.shared.DALException;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -56,22 +57,67 @@ public class UserImplementation implements UserInterface{
 
 	@Override
 	public boolean createUser(UserDTO user) throws DALException {
-		String sql = "INSERT INTO user(navn, ini, password, rolle_id) VALUES ("
-					+user.getName()+", "
-					+user.getInitials()+", "
-					+user.getPassword()+", "
-					+user.getRoleID()+");";
-		try{
-			stm = conn.createStatement();
-			ResultSet rs = stm.executeQuery(sql);
+		CallableStatement stmt = null;
+		String cmd = "CALL InsertUser(?, ?, ?, ?, ?, ?, ?)";
+		
+		try {
+			stmt = conn.prepareCall(cmd);
 			
-		}catch(SQLException e){System.out.println("SQL Exception Occurred: "+e);}
-		return false;			
+			stmt.setInt(1, user.getUserID());
+			stmt.setString(2, user.getName());
+			stmt.setString(3, user.getInitials());
+			stmt.setString(4, user.getPassword());
+			stmt.setLong(5, user.getRoleID());
+			stmt.registerOutParameter(5, java.sql.Types.INTEGER);
+			stmt.registerOutParameter(6, java.sql.Types.VARCHAR);
+			stmt.registerOutParameter(7, java.sql.Types.SMALLINT);
+			
+			stmt.executeUpdate();
+			
+			returnMsg = stmt.getInt(5);
+			SQLMsg = stmt.getString(6);
+			SQLErr = stmt.getInt(7);
+			
+			System.out.println("var returnMsg: " + returnMsg + " var SQLMsg: " + SQLMsg + " var SQLErr: " + SQLErr);
+			
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;			
+		}		
 	}
 
 	@Override
 	public boolean updateUser(UserDTO user) throws DALException {
-		return false;
+		CallableStatement stmt = null;
+		String cmd = "CALL UpdateUser(?, ?, ?, ?, ?, ?, ?)";
+		
+		try {
+			stmt = conn.prepareCall(cmd);
+			
+			stmt.setString(1, user.getName());
+			stmt.setString(2, user.getInitials());
+			stmt.setString(3, user.getPassword());
+			stmt.setLong(4, user.getRoleID());
+			stmt.registerOutParameter(5, java.sql.Types.INTEGER);
+			stmt.registerOutParameter(6, java.sql.Types.VARCHAR);
+			stmt.registerOutParameter(7, java.sql.Types.SMALLINT);
+			
+			stmt.executeUpdate();
+			
+			returnMsg = stmt.getInt(5);
+			SQLMsg = stmt.getString(6);
+			SQLErr = stmt.getInt(7);
+			
+			System.out.println("var returnMsg: " + returnMsg + " var SQLMsg: " + SQLMsg + " var SQLErr: " + SQLErr);
+			
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;			
+		}	
 	}
 
 }
