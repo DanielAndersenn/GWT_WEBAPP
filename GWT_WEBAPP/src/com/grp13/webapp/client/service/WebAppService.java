@@ -4,17 +4,17 @@ import java.util.List;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
-import com.grp13.webapp.client.model.UserDTO;
 import com.grp13.webapp.shared.AccessDeniedException;
 import com.grp13.webapp.shared.DALException;
+import com.grp13.webapp.shared.UserDTO;
 
 @RemoteServiceRelativePath("WebAppService")
 public interface WebAppService extends RemoteService {
 	
 	boolean validateCredentials(String userID, String password) throws AccessDeniedException;
 	List<UserDTO> getUsers();
-	void addUser(UserDTO newUser) throws DALException;
-	void editUser(UserDTO editedUser) throws DALException;
-	void deleteUser(int id) throws DALException;
+	void addUser(UserDTO newUser) throws Exception;
+	void editUser(UserDTO editedUser) throws Exception;
+	void deleteUser(int id) throws Exception;
 
 }

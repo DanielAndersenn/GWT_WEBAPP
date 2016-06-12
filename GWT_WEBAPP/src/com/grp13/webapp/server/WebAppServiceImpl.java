@@ -4,12 +4,12 @@ import java.util.List;
 
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.grp13.webapp.client.model.UserDTO;
 import com.grp13.webapp.client.service.WebAppService;
 import com.grp13.webapp.server.db.IDBController;
 import com.grp13.webapp.server.db.MSQLDBController;
 import com.grp13.webapp.shared.AccessDeniedException;
 import com.grp13.webapp.shared.DALException;
+import com.grp13.webapp.shared.UserDTO;
 
 public class WebAppServiceImpl extends RemoteServiceServlet implements WebAppService{
 

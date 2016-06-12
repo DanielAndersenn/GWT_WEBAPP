@@ -1,4 +1,4 @@
-package com.grp13.webapp.client.model;
+package com.grp13.webapp.shared;
 
 import java.io.Serializable;
 

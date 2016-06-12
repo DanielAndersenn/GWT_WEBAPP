@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-import com.grp13.webapp.client.model.UserDTO;
-import com.grp13.webapp.client.model.opskriftDTO;
 import com.grp13.webapp.server.dao.implementation.UserImplementation;
 import com.grp13.webapp.server.dao.interfaces.UserInterface;
 import com.grp13.webapp.shared.AccessDeniedException;
 import com.grp13.webapp.shared.DALException;
+import com.grp13.webapp.shared.UserDTO;
+import com.grp13.webapp.shared.opskriftDTO;
 
 public class MSQLDBController implements IDBController {
 	private static IDBController controller;

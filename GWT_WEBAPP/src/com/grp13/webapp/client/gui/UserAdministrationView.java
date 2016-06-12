@@ -17,9 +17,9 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
-import com.grp13.webapp.client.model.UserDTO;
 import com.grp13.webapp.client.service.WebAppServiceAsync;
 import com.grp13.webapp.shared.DALException;
+import com.grp13.webapp.shared.UserDTO;
 
 
 public class UserAdministrationView extends Composite{

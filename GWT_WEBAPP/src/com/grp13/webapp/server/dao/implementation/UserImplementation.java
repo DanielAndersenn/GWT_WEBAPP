@@ -3,10 +3,10 @@ package com.grp13.webapp.server.dao.implementation;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.grp13.webapp.client.model.UserDTO;
 import com.grp13.webapp.server.dao.interfaces.UserInterface;
 import com.grp13.webapp.shared.AccessDeniedException;
 import com.grp13.webapp.shared.DALException;
+import com.grp13.webapp.shared.UserDTO;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -80,10 +80,10 @@ public class UserImplementation implements UserInterface{
 			System.out.println("var returnMsg: " + returnMsg + " var SQLMsg: " + SQLMsg + " var SQLErr: " + SQLErr);
 			System.out.println("createUser END");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("createUser FAIL");
-		}		
+		}
+		
 	}
 
 	@Override
@@ -144,5 +144,9 @@ public class UserImplementation implements UserInterface{
 		} catch (SQLException e) {
 			System.out.println("deleteUser FAIL");
 		}
+
+		
+		if(returnMsg != 1) throw new DALException();
+			
 	}
 }
