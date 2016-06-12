@@ -13,8 +13,8 @@ public interface WebAppService extends RemoteService {
 	
 	boolean validateCredentials(String userID, String password) throws AccessDeniedException;
 	List<UserDTO> getUsers();
-	boolean addUser() throws DALException;
-	boolean editUser() throws DALException;
-	boolean deleteUser() throws DALException;
+	boolean addUser(UserDTO newUser) throws DALException;
+	boolean editUser(UserDTO editedUser) throws DALException;
+	boolean deleteUser(int id) throws DALException;
 
 }
