@@ -53,14 +53,18 @@ public class MSQLDBController implements IDBController {
 	}
 
 	@Override
-	public boolean createUser(UserDTO user) throws DALException {
-		return userDAO.createUser(user);
+	public void createUser(UserDTO user) throws DALException {
+		userDAO.createUser(user);
 	}
 
 	@Override
-	public boolean updateUser(UserDTO user) throws DALException {
-		return userDAO.updateUser(user);
-
+	public void updateUser(UserDTO user) throws DALException {
+		userDAO.updateUser(user);
+	}
+	
+	@Override
+	public void deleteUser(int a) throws DALException {
+		userDAO.deleteUser(a);
 	}
 
 	@Override

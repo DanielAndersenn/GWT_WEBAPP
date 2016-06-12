@@ -56,10 +56,10 @@ public class UserImplementation implements UserInterface{
 	
 
 	@Override
-	public boolean createUser(UserDTO user) throws DALException {
+	public void createUser(UserDTO user) throws DALException {
+		System.out.println("Create User Started");
 		CallableStatement stmt = null;
 		String cmd = "CALL InsertUser(?, ?, ?, ?, ?, ?, ?)";
-		
 		try {
 			stmt = conn.prepareCall(cmd);
 			
@@ -78,17 +78,16 @@ public class UserImplementation implements UserInterface{
 			SQLErr = stmt.getInt(7);
 			
 			System.out.println("var returnMsg: " + returnMsg + " var SQLMsg: " + SQLMsg + " var SQLErr: " + SQLErr);
-			
-			return true;
+			System.out.println("Create User Ended");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;			
+			System.out.println("Create User Failed");
 		}		
 	}
 
 	@Override
-	public boolean updateUser(UserDTO user) throws DALException {
+	public void updateUser(UserDTO user) throws DALException {
 		CallableStatement stmt = null;
 		String cmd = "CALL UpdateUser(?, ?, ?, ?, ?, ?, ?)";
 		
@@ -111,13 +110,15 @@ public class UserImplementation implements UserInterface{
 			SQLErr = stmt.getInt(7);
 			
 			System.out.println("var returnMsg: " + returnMsg + " var SQLMsg: " + SQLMsg + " var SQLErr: " + SQLErr);
-			
-			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;			
 		}	
+	}
+
+	@Override
+	public void deleteUser(int a) throws DALException {
+		// TODO Auto-generated method stub
 	}
 
 }
