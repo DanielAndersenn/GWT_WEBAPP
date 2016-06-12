@@ -53,7 +53,7 @@ public class AddUserView extends Composite{
 	
 	}
 	
-	private class addUserCallback implements AsyncCallback<Boolean> {
+	private class addUserCallback implements AsyncCallback {
 
 		@Override
 		public void onFailure(Throwable caught) {
@@ -62,7 +62,7 @@ public class AddUserView extends Composite{
 		}
 
 		@Override
-		public void onSuccess(Boolean result) {
+		public void onSuccess(Object result) {
 			Window.alert("User added!!!!!!!!!!");
 			
 		}
