@@ -7,8 +7,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+import com.grp13.webapp.server.dao.implementation.OpskriftImplementation;
 import com.grp13.webapp.server.dao.implementation.UserImplementation;
 import com.grp13.webapp.server.dao.interfaces.UserInterface;
+import com.grp13.webapp.server.dao.interfaces.opskriftInterface;
 import com.grp13.webapp.shared.AccessDeniedException;
 import com.grp13.webapp.shared.DALException;
 import com.grp13.webapp.shared.UserDTO;
@@ -22,6 +24,7 @@ public class MSQLDBController implements IDBController {
 	private String user = "DTU";
 	private String pass = "HejVen123";
 	private UserInterface userDAO;
+	private opskriftInterface opskriftDAO;
 
 	public MSQLDBController() {
 		try {
@@ -32,6 +35,7 @@ public class MSQLDBController implements IDBController {
 			System.out.println(e);
 		}
 		this.userDAO = new UserImplementation(conn);
+		this.opskriftDAO = new OpskriftImplementation(conn);
 	}
 
 	public static  IDBController getInstance() {
@@ -96,10 +100,32 @@ public class MSQLDBController implements IDBController {
 		return userValid;
 	}
 
-	@Override
 	public opskriftDTO getRecipe() throws DALException {
-		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<opskriftDTO> getRecipeList() throws DALException {
+		opskriftDAO.getRecipeList();
+		return null;
+	}
+
+	@Override
+	public void createRecipe(opskriftDTO opskrift) throws DALException {
+		opskriftDAO.createRecipe(opskrift);
+		
+	}
+
+	@Override
+	public void updateRecipe(opskriftDTO opskrift) throws DALException {
+		opskriftDAO.updateRecipe(opskrift);
+		
+	}
+
+	@Override
+	public void deleteRecipe(opskriftDTO opskrift) throws DALException {
+		opskriftDAO.deleteRecipe(opskrift);
+		
 	}
 
 

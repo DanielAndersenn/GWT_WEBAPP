@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class opskriftDTO implements Serializable{
 
 	private int opskriftID;
-	private int medarbejderID;
+	private int userID;
 	private String navn;
 	private String ingredienser;
 	private String beskrivelse;
@@ -14,12 +14,12 @@ public class opskriftDTO implements Serializable{
 		//GWT Compliance. Not needed.
 	}
 	
-	public opskriftDTO(int opskriftID, int medarbejderID, String navn, String ingredienser, String beskrivelse) {
+	public opskriftDTO(int opskriftID, String navn, String ingredienser, String beskrivelse, int userID) {
 		this.opskriftID = opskriftID;
-		this.medarbejderID = medarbejderID;
 		this.navn = navn;
 		this.ingredienser = ingredienser;
 		this.beskrivelse = beskrivelse;
+		this.userID = userID;
 	}
 	
 	public int getOpskriftID() {
@@ -29,10 +29,10 @@ public class opskriftDTO implements Serializable{
 		this.opskriftID = opskriftID;
 	}
 	public int getMedarbejderID() {
-		return medarbejderID;
+		return userID;
 	}
 	public void setMedarbejderID(int medarbejderID) {
-		this.medarbejderID = medarbejderID;
+		this.userID = medarbejderID;
 	}
 	public String getNavn() {
 		return navn;
