@@ -3,15 +3,21 @@ package com.grp13.webapp.client.gui;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.grp13.webapp.client.model.UserDTO;
 import com.grp13.webapp.client.service.WebAppServiceAsync;
+import com.grp13.webapp.shared.DALException;
 
 
 public class BrowseUsersView extends Composite{
@@ -19,12 +25,18 @@ public class BrowseUsersView extends Composite{
 	private static BrowseUsersView1UiBinder uiBinder = GWT.create(BrowseUsersView1UiBinder.class);
 	
 	@UiField FlexTable t;
+	@UiField Button deleteUser;
+	@UiField TextBox idToDelete;
+	@UiField Label deleteLabel;
+	
+	WebAppServiceAsync service;
 	
 	interface BrowseUsersView1UiBinder extends UiBinder<Widget, BrowseUsersView> {
 	}
 	
 	public BrowseUsersView(WebAppServiceAsync service) {
 		
+		this.service = service;
 		initWidget(uiBinder.createAndBindUi(this));
 
 		t.getFlexCellFormatter().setWidth(0, 0, "50px");
@@ -46,6 +58,18 @@ public class BrowseUsersView extends Composite{
 		
 	}
 	
+	@UiHandler("deleteUser")
+	void onDeleteClick(ClickEvent event) {
+	
+	try {
+		service.deleteUser(Integer.parseInt(idToDelete.getText()), new deleteUserCallback());
+	} catch (DALException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	}
+	
 	private class getUsersCallback implements AsyncCallback<List<UserDTO>> {
 
 		@Override
@@ -63,6 +87,23 @@ public class BrowseUsersView extends Composite{
 				t.setText(i+1, 3, "" + result.get(i).getRoleID());
 				
 			}
+			
+		}
+		
+	}
+	
+	private class deleteUserCallback implements AsyncCallback {
+
+		@Override
+		public void onFailure(Throwable caught) {
+			Window.alert("User not deleted. Error msg: " + caught.getMessage());
+			
+		}
+
+		@Override
+		public void onSuccess(Object result) {
+			
+			Window.alert("User with ID: " + idToDelete.getText() + " has been deleted.");
 			
 		}
 		
