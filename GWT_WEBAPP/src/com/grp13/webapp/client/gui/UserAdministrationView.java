@@ -78,13 +78,7 @@ public class UserAdministrationView extends Composite{
 	@UiHandler("deleteUser")
 	void onDeleteClick(ClickEvent event) {
 	
-	try {
 		service.deleteUser(Integer.parseInt(idToDelete.getText()), new deleteUserCallback());
-	} catch (DALException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	
 	}
 	
 	@UiHandler("addUser")
@@ -93,13 +87,8 @@ public class UserAdministrationView extends Composite{
 	//Create UserDTO object from fieldvalues
 	UserDTO newUser = new UserDTO(1, name.getText(), initials.getText(), password.getText(), Integer.parseInt(roleID.getText()));
 	
-	try {
 		service.addUser(newUser, new addUserCallback());
-	} catch (DALException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	
+
 	}
 	
 	private class getUsersCallback implements AsyncCallback<List<UserDTO>> {
@@ -123,7 +112,7 @@ public class UserAdministrationView extends Composite{
 		
 	}
 	
-	private class deleteUserCallback implements AsyncCallback {
+	private class deleteUserCallback implements AsyncCallback<Void> {
 
 		@Override
 		public void onFailure(Throwable caught) {
@@ -132,7 +121,7 @@ public class UserAdministrationView extends Composite{
 		}
 
 		@Override
-		public void onSuccess(Object result) {
+		public void onSuccess(Void result) {
 			Window.alert("User with ID: " + idToDelete.getText() + " has been deleted.");
 			t.removeRow(t.getRowCount()-1);
 			reloadFlexTable();
@@ -141,7 +130,7 @@ public class UserAdministrationView extends Composite{
 		
 	}
 	
-	private class addUserCallback implements AsyncCallback {
+	private class addUserCallback implements AsyncCallback<Void> {
 
 		@Override
 		public void onFailure(Throwable caught) {
@@ -150,7 +139,7 @@ public class UserAdministrationView extends Composite{
 		}
 
 		@Override
-		public void onSuccess(Object result) {
+		public void onSuccess(Void result) {
 			
 			Window.alert("User added!");
 			name.setValue("");

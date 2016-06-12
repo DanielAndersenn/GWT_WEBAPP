@@ -42,28 +42,28 @@ public class MSQLDBController implements IDBController {
 	}
 
 	@Override
-	public UserDTO getUser(String name) throws DALException {
+	public UserDTO getUser(String name) throws Exception {
 		
 		return userDAO.getUser(name);
 	}
 
 	@Override
-	public List<UserDTO> getUserList() throws DALException {
+	public List<UserDTO> getUserList() throws Exception {
 		return userDAO.getUserList();
 	}
 
 	@Override
-	public void createUser(UserDTO user) throws DALException {
+	public void createUser(UserDTO user) throws Exception {
 		userDAO.createUser(user);
 	}
 
 	@Override
-	public void updateUser(UserDTO user) throws DALException {
+	public void updateUser(UserDTO user) throws Exception {
 		userDAO.updateUser(user);
 	}
 	
 	@Override
-	public void deleteUser(int a) throws DALException {
+	public void deleteUser(int a) throws Exception {
 		userDAO.deleteUser(a);
 	}
 

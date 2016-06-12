@@ -6,6 +6,11 @@ public class DALException extends Exception implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	
+	public DALException() {
+		super();
+		System.out.println("Ender vi her?");
+	}
+	
 	public DALException(String message) { 
 		super(message); 
 		System.out.println(message);	
@@ -19,8 +24,5 @@ public class DALException extends Exception implements Serializable
 		
 	}
 	
-	public DALException() {
-		super();
-		System.out.println("Ender vi her?");
-	}
+
 }

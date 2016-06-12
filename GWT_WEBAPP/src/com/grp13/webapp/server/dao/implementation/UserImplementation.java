@@ -120,7 +120,7 @@ public class UserImplementation implements UserInterface{
 	}
 
 	@Override
-	public void deleteUser(int a) throws DALException {
+	public void deleteUser(int a) throws Exception {
 		System.out.println("deleteUser START");
 		CallableStatement stmt = null;
 		String cmd = "CALL DeleteUser(?, ?, ?, ?)";
@@ -143,10 +143,11 @@ public class UserImplementation implements UserInterface{
 			System.out.println("deleteUser END");
 		} catch (SQLException e) {
 			System.out.println("deleteUser FAIL");
+			throw new DALException("deleteUser fejlede !!!");
 		}
 
 		
-		if(returnMsg != 1) throw new DALException();
+		if(returnMsg != 1) throw new DALException("deleteUser fejlede !!!");
 			
 	}
 }

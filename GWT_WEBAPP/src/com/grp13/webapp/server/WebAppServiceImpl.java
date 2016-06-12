@@ -33,7 +33,7 @@ public class WebAppServiceImpl extends RemoteServiceServlet implements WebAppSer
 
 
 	@Override
-	public List<UserDTO> getUsers() {
+	public List<UserDTO> getUsers() throws Exception{
 		List<UserDTO> uList = null;
 		try {
 			uList = dbcontroller.getUserList();
@@ -47,7 +47,7 @@ public class WebAppServiceImpl extends RemoteServiceServlet implements WebAppSer
 
 
 	@Override
-	public void addUser(UserDTO newUser) throws DALException {
+	public void addUser(UserDTO newUser) throws Exception {
 		try{
 			dbcontroller.createUser(newUser);
 		}catch(DALException e){e.printStackTrace();}
@@ -55,7 +55,7 @@ public class WebAppServiceImpl extends RemoteServiceServlet implements WebAppSer
 
 
 	@Override
-	public void editUser(UserDTO editedUser) throws DALException {
+	public void editUser(UserDTO editedUser) throws Exception {
 		try{
 			dbcontroller.updateUser(editedUser);
 		}catch(DALException e){e.printStackTrace();}
@@ -63,10 +63,14 @@ public class WebAppServiceImpl extends RemoteServiceServlet implements WebAppSer
 
 
 	@Override
-	public void deleteUser(int user_ID) throws DALException {
+	public void deleteUser(int user_ID) throws Exception {
 		try{
 			dbcontroller.deleteUser(user_ID);
-		}catch(DALException e){e.printStackTrace();}
+		}catch(DALException e){
+			
+		throw new DALException("Lol");
+		
+		}
 	}
 
 	

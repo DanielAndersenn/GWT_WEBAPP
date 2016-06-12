@@ -10,9 +10,9 @@ public interface WebAppServiceAsync {
 	
 	void validateCredentials(String userID, String password, AsyncCallback<Boolean> callback);
 	void getUsers(AsyncCallback<List<UserDTO>> callback);
-	void addUser(UserDTO newUser, AsyncCallback<Void> callback) throws DALException;
-	void editUser(UserDTO editedUser, AsyncCallback<Void> callback)throws DALException;
-	void deleteUser(int user_ID, AsyncCallback<Void> callback)throws DALException;
+	void addUser(UserDTO newUser, AsyncCallback<Void> callback);
+	void editUser(UserDTO editedUser, AsyncCallback<Void> callback);
+	void deleteUser(int user_ID, AsyncCallback<Void> callback);
 	
 
 }

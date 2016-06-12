@@ -7,10 +7,10 @@ import com.grp13.webapp.shared.UserDTO;
 
 public interface UserInterface {
 
-	UserDTO getUser(String name) throws DALException;
-	List<UserDTO> getUserList() throws DALException;
-	void createUser(UserDTO user) throws DALException;
-	void updateUser(UserDTO user) throws DALException;
-	void deleteUser(int a) throws DALException;
+	UserDTO getUser(String name) throws Exception;
+	List<UserDTO> getUserList() throws Exception;
+	void createUser(UserDTO user) throws Exception;
+	void updateUser(UserDTO user) throws Exception;
+	void deleteUser(int a) throws Exception;
 	
 }
