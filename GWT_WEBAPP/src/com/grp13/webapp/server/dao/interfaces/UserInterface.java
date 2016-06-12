@@ -9,7 +9,7 @@ public interface UserInterface {
 
 	UserDTO getUser(String name) throws DALException;
 	List<UserDTO> getUserList() throws DALException;
-	void createUser(UserDTO user) throws DALException;
-	void updateUser(UserDTO user) throws DALException;
+	boolean createUser(UserDTO user) throws DALException;
+	boolean updateUser(UserDTO user) throws DALException;
 	
 }

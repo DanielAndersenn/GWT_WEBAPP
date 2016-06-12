@@ -55,15 +55,23 @@ public class UserImplementation implements UserInterface{
 	
 
 	@Override
-	public void createUser(UserDTO user) throws DALException {
-		// TODO Auto-generated method stub
-		
+	public boolean createUser(UserDTO user) throws DALException {
+		String sql = "INSERT INTO user(navn, ini, password, rolle_id) VALUES ("
+					+user.getName()+", "
+					+user.getInitials()+", "
+					+user.getPassword()+", "
+					+user.getRoleID()+");";
+		try{
+			stm = conn.createStatement();
+			ResultSet rs = stm.executeQuery(sql);
+			
+		}catch(SQLException e){System.out.println("SQL Exception Occurred: "+e);}
+		return false;			
 	}
 
 	@Override
-	public void updateUser(UserDTO user) throws DALException {
-		// TODO Auto-generated method stub
-		
+	public boolean updateUser(UserDTO user) throws DALException {
+		return false;
 	}
 
 }

@@ -53,14 +53,13 @@ public class MSQLDBController implements IDBController {
 	}
 
 	@Override
-	public void createUser(UserDTO user) throws DALException {
-		// TODO Auto-generated method stub
-
+	public boolean createUser(UserDTO user) throws DALException {
+		return userDAO.createUser(user);
 	}
 
 	@Override
-	public void updateUser(UserDTO user) throws DALException {
-		// TODO Auto-generated method stub
+	public boolean updateUser(UserDTO user) throws DALException {
+		return false;
 
 	}
 

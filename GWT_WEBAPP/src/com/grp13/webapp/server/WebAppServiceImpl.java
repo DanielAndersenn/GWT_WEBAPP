@@ -48,14 +48,16 @@ public class WebAppServiceImpl extends RemoteServiceServlet implements WebAppSer
 
 	@Override
 	public boolean addUser(UserDTO newUser) throws DALException {
-		// TODO Auto-generated method stub
+		try{
+			dbcontroller.createUser(newUser);
+			return true;
+		}catch(DALException e){e.printStackTrace();}
 		return false;
 	}
 
 
 	@Override
 	public boolean editUser(UserDTO editedUser) throws DALException {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
