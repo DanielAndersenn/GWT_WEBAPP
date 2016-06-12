@@ -89,7 +89,7 @@ public class UserImplementation implements UserInterface{
 	@Override
 	public void updateUser(UserDTO user) throws DALException {
 		CallableStatement stmt = null;
-		String cmd = "CALL UpdateUser(?, ?, ?, ?, ?, ?, ?)";
+		String cmd = "CALL UpdateUser(?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 			stmt = conn.prepareCall(cmd);
@@ -99,15 +99,15 @@ public class UserImplementation implements UserInterface{
 			stmt.setString(3, user.getInitials());
 			stmt.setString(4, user.getPassword());
 			stmt.setLong(5, user.getRoleID());
-			stmt.registerOutParameter(5, java.sql.Types.INTEGER);
-			stmt.registerOutParameter(6, java.sql.Types.VARCHAR);
-			stmt.registerOutParameter(7, java.sql.Types.SMALLINT);
+			stmt.registerOutParameter(6, java.sql.Types.INTEGER);
+			stmt.registerOutParameter(7, java.sql.Types.VARCHAR);
+			stmt.registerOutParameter(8, java.sql.Types.SMALLINT);
 			
 			stmt.executeUpdate();
 			
-			returnMsg = stmt.getInt(5);
-			SQLMsg = stmt.getString(6);
-			SQLErr = stmt.getInt(7);
+			returnMsg = stmt.getInt(6);
+			SQLMsg = stmt.getString(7);
+			SQLErr = stmt.getInt(8);
 			
 			System.out.println("var returnMsg: " + returnMsg + " var SQLMsg: " + SQLMsg + " var SQLErr: " + SQLErr);
 		} catch (SQLException e) {
@@ -118,7 +118,28 @@ public class UserImplementation implements UserInterface{
 
 	@Override
 	public void deleteUser(int a) throws DALException {
-		// TODO Auto-generated method stub
+		CallableStatement stmt = null;
+		String cmd = "CALL DeleteUser(?, ?, ?, ?)";
+		
+		try {
+			stmt = conn.prepareCall(cmd);
+			
+			stmt.setInt(1, a);
+			stmt.registerOutParameter(2, java.sql.Types.INTEGER);
+			stmt.registerOutParameter(3, java.sql.Types.VARCHAR);
+			stmt.registerOutParameter(4, java.sql.Types.SMALLINT);
+			
+			stmt.executeUpdate();
+			
+			returnMsg = stmt.getInt(2);
+			SQLMsg = stmt.getString(3);
+			SQLErr = stmt.getInt(4);
+			
+			System.out.println("var returnMsg: " + returnMsg + " var SQLMsg: " + SQLMsg + " var SQLErr: " + SQLErr);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

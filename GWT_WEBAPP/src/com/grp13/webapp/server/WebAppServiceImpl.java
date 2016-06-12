@@ -64,7 +64,9 @@ public class WebAppServiceImpl extends RemoteServiceServlet implements WebAppSer
 
 	@Override
 	public void deleteUser(int user_ID) throws DALException {
-		// TODO Auto-generated method stub
+		try{
+			dbcontroller.deleteUser(user_ID);
+		}catch(DALException e){e.printStackTrace();}
 	}
 
 	
