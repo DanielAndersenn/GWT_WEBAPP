@@ -12,9 +12,9 @@ public interface WebAppServiceAsync {
 	void validateCredentials(String userID, String password, AsyncCallback<Boolean> callback);
 	void getUsers(AsyncCallback<List<UserDTO>> callback);
 	void addUser(UserDTO newUser, AsyncCallback<Void> callback);
-	void editUser(UserDTO editedUser, AsyncCallback<Void> callback);
 	void deleteUser(int user_ID, AsyncCallback<Void> callback);
 	void getRecipeList(AsyncCallback<List<opskriftDTO>> callback);
+	void addRecipe(opskriftDTO newRecipe, AsyncCallback<Void> callback);
 	
 
 }

@@ -15,7 +15,7 @@ public interface WebAppService extends RemoteService {
 	boolean validateCredentials(String userID, String password) throws AccessDeniedException;
 	List<UserDTO> getUsers() throws Exception;
 	void addUser(UserDTO newUser) throws Exception;
-	void editUser(UserDTO editedUser) throws Exception;
 	void deleteUser(int id) throws Exception;
 	List<opskriftDTO> getRecipeList() throws Exception;
+	void addRecipe(opskriftDTO newRecipe) throws Exception;
 }

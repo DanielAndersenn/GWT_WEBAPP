@@ -54,15 +54,6 @@ public class WebAppServiceImpl extends RemoteServiceServlet implements WebAppSer
 		}catch(DALException e){e.printStackTrace();}
 	}
 
-
-	@Override
-	public void editUser(UserDTO editedUser) throws Exception {
-		try{
-			dbcontroller.updateUser(editedUser);
-		}catch(DALException e){e.printStackTrace();}
-	}
-
-
 	@Override
 	public void deleteUser(int user_ID) throws Exception {
 		try{
@@ -84,6 +75,14 @@ public class WebAppServiceImpl extends RemoteServiceServlet implements WebAppSer
 			throw new DALException(e.getMessage());
 		}
 		return rList;
+	}
+
+
+	@Override
+	public void addRecipe(opskriftDTO newRecipe) throws Exception {
+		try{
+			dbcontroller.createRecipe(newRecipe);
+		}catch(DALException e){e.printStackTrace();}
 	}
 
 	

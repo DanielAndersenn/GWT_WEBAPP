@@ -3,8 +3,10 @@ package com.grp13.webapp.client.gui;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
@@ -16,6 +18,7 @@ import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.grp13.webapp.client.service.WebAppServiceAsync;
+import com.grp13.webapp.shared.UserDTO;
 import com.grp13.webapp.shared.opskriftDTO;
 
 public class RecipeAdministrationView extends Composite{
@@ -29,15 +32,15 @@ public class RecipeAdministrationView extends Composite{
 	
 	//Add recipe panel
 	@UiField HorizontalPanel addPanel;
-	@UiField TextBox userID;
+	@UiField TextBox recipeID;
 	@UiField TextBox name;
-	@UiField TextBox initials;
-	@UiField TextBox roleID;
-	@UiField PasswordTextBox password;
-	@UiField Button addUser;
+	@UiField TextBox ingredients;
+	@UiField TextBox description;
+	@UiField TextBox userID;
+	@UiField Button addRecipe;
 	
 	//Delete recipe panel
-	@UiField Button deleteUser;
+	@UiField Button deleteRecipe;
 	@UiField TextBox idToDelete;
 	@UiField Label deleteLabel;
 	
@@ -65,12 +68,30 @@ public class RecipeAdministrationView extends Composite{
 		recipes.setText(0, 1, "Navn");
 		recipes.setText(0, 2, "Ingredienser");
 		recipes.setText(0, 3, "Beskrivelse");
-		recipes.setText(0, 4, "Rolle ID");
+		recipes.setText(0, 4, "User ID");
 		
 		//Populate flex table
 		service.getRecipeList(new getRecipeListCallback());
 		
 		
+	}
+	
+	@UiHandler("addRecipe")
+	void onAddClick(ClickEvent event) {
+	
+	//Create UserDTO object from fieldvalues
+	opskriftDTO newRecipe = new opskriftDTO(1, name.getText(), ingredients.getText(), description.getText(), Integer.parseInt(userID.getText()));
+		service.addRecipe(newRecipe, new addRecipeCallback());
+
+	}
+	
+	@UiHandler("deleteRecipe")
+	void onDeleteClick(ClickEvent event) {
+	
+	//Create UserDTO object from fieldvalues
+	opskriftDTO newRecipe = new opskriftDTO(1, name.getText(), ingredients.getText(), description.getText(), Integer.parseInt(userID.getText()));
+		service.addRecipe(newRecipe, new addRecipeCallback());
+
 	}
 	
 	private class getRecipeListCallback implements AsyncCallback<List<opskriftDTO>> {
@@ -94,6 +115,50 @@ public class RecipeAdministrationView extends Composite{
 			
 		}
 		
+	}
+	
+	private class addRecipeCallback implements AsyncCallback<Void> {
+
+		@Override
+		public void onFailure(Throwable caught) {
+			Window.alert("Server fejl!" + caught.getMessage());
+			
+		}
+
+		@Override
+		public void onSuccess(Void result) {
+			Window.alert("Recipe added!");
+			recipeID.setValue("");
+			name.setValue("");
+			description.setValue("");
+			ingredients.setValue("");
+			userID.setValue("");
+			recipes.insertRow(recipes.getRowCount()-1);
+			reloadFlexTable();
+		}
+		
+	}
+	
+	private class deleteRecipeCallback implements AsyncCallback<Void> {
+
+		@Override
+		public void onFailure(Throwable caught) {
+			Window.alert("Recipe not deleted. Error msg: " + caught.getMessage());
+			
+		}
+
+		@Override
+		public void onSuccess(Void result) {
+			Window.alert("Recipe with ID: " + idToDelete.getText() + " has been deleted.");
+			recipes.removeRow(recipes.getRowCount()-1);
+			reloadFlexTable();
+			
+		}
+		
+	}
+	
+	public void reloadFlexTable() {
+		service.getRecipeList(new getRecipeListCallback());
 	}
 	
 	
