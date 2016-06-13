@@ -17,6 +17,7 @@ import com.grp13.webapp.shared.AccessDeniedException;
 import com.grp13.webapp.shared.DALException;
 import com.grp13.webapp.shared.UserDTO;
 import com.grp13.webapp.shared.opskriftDTO;
+import com.grp13.webapp.shared.opskriftTrinDTO;
 
 public class MSQLDBController implements IDBController {
 	private static IDBController controller;
@@ -128,6 +129,29 @@ public class MSQLDBController implements IDBController {
 	@Override
 	public void deleteRecipe(int a) throws DALException {
 		opskriftDAO.deleteRecipe(a);
+		
+	}
+
+	@Override
+	public List<opskriftTrinDTO> getRecipeStepList() throws DALException {
+		return opskriftTrinDAO.getRecipeStepList();
+	}
+
+	@Override
+	public void createRecipeStep(opskriftTrinDTO opskriftTrin) throws DALException {
+		opskriftTrinDAO.createRecipeStep(opskriftTrin);
+		
+	}
+
+	@Override
+	public void updateRecipeStep(opskriftTrinDTO opskriftTrin) throws DALException {
+		opskriftTrinDAO.updateRecipeStep(opskriftTrin);
+		
+	}
+
+	@Override
+	public void deleteRecipeStep(int a) throws DALException {
+		opskriftTrinDAO.deleteRecipeStep(a);
 		
 	}
 	
