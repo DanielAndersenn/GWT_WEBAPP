@@ -36,6 +36,7 @@ public class OpskriftImplementation implements opskriftInterface{
 				oList.add(new opskriftDTO(rs.getInt("opskrift_id"), rs.getString("navn"), rs.getString("ingredienser"), rs.getString("beskrivelse"), rs.getInt("user_ID")));
 			}
 		}catch(SQLException e){e.printStackTrace();}
+		System.out.println("getRecipeList END");
 		return oList;
 	}
 
