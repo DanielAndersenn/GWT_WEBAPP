@@ -18,4 +18,5 @@ public interface WebAppService extends RemoteService {
 	void deleteUser(int id) throws Exception;
 	List<opskriftDTO> getRecipeList() throws Exception;
 	void addRecipe(opskriftDTO newRecipe) throws Exception;
+	void deleteRecipe(int id) throws Exception;
 }

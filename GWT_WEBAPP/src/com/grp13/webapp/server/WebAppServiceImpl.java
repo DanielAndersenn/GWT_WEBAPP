@@ -85,5 +85,18 @@ public class WebAppServiceImpl extends RemoteServiceServlet implements WebAppSer
 		}catch(DALException e){e.printStackTrace();}
 	}
 
+
+	@Override
+	public void deleteRecipe(int id) throws Exception {
+		try{
+			dbcontroller.deleteUser(id);
+		}catch(DALException e){
+			
+		throw new DALException(e.getMessage());
+		
+		}
+		
+	}
+
 	
 }

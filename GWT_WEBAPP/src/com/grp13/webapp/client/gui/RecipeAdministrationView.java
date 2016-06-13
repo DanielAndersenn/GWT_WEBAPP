@@ -89,8 +89,8 @@ public class RecipeAdministrationView extends Composite{
 	void onDeleteClick(ClickEvent event) {
 	
 	//Create UserDTO object from fieldvalues
-	opskriftDTO newRecipe = new opskriftDTO(1, name.getText(), ingredients.getText(), description.getText(), Integer.parseInt(userID.getText()));
-		service.addRecipe(newRecipe, new addRecipeCallback());
+	
+		service.deleteRecipe(Integer.parseInt(idToDelete.getText()), new deleteRecipeCallback());
 
 	}
 	

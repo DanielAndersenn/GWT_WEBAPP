@@ -15,6 +15,7 @@ public interface WebAppServiceAsync {
 	void deleteUser(int user_ID, AsyncCallback<Void> callback);
 	void getRecipeList(AsyncCallback<List<opskriftDTO>> callback);
 	void addRecipe(opskriftDTO newRecipe, AsyncCallback<Void> callback);
+	void deleteRecipe(int recipe_ID, AsyncCallback<Void> callback);
 	
 
 }
