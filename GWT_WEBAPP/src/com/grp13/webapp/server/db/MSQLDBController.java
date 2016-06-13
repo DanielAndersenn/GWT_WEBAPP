@@ -8,7 +8,9 @@ import java.sql.Statement;
 import java.util.List;
 
 import com.grp13.webapp.server.dao.implementation.OpskriftImplementation;
+import com.grp13.webapp.server.dao.implementation.OpskriftTrinImplementation;
 import com.grp13.webapp.server.dao.implementation.UserImplementation;
+import com.grp13.webapp.server.dao.interfaces.OpskriftTrinInterface;
 import com.grp13.webapp.server.dao.interfaces.UserInterface;
 import com.grp13.webapp.server.dao.interfaces.opskriftInterface;
 import com.grp13.webapp.shared.AccessDeniedException;
@@ -25,6 +27,7 @@ public class MSQLDBController implements IDBController {
 	private String pass = "HejVen123";
 	private UserInterface userDAO;
 	private opskriftInterface opskriftDAO;
+	private OpskriftTrinInterface opskriftTrinDAO;
 
 	public MSQLDBController() {
 		try {
@@ -36,6 +39,7 @@ public class MSQLDBController implements IDBController {
 		}
 		this.userDAO = new UserImplementation(conn);
 		this.opskriftDAO = new OpskriftImplementation(conn);
+		this.opskriftTrinDAO = new OpskriftTrinImplementation(conn);
 	}
 
 	public static  IDBController getInstance() {
@@ -127,6 +131,7 @@ public class MSQLDBController implements IDBController {
 		opskriftDAO.deleteRecipe(a);
 		
 	}
+	
 
 
 
