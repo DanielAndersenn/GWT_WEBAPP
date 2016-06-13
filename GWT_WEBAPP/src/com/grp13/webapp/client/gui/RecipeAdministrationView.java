@@ -47,8 +47,9 @@ public class RecipeAdministrationView extends Composite{
 	}
 	
 	public RecipeAdministrationView(WebAppServiceAsync service) {
-		initWidget(uiBinder.createAndBindUi(this));
 		this.service = service;
+		initWidget(uiBinder.createAndBindUi(this));
+		
 		
 		//Format flex table
 		recipes.getFlexCellFormatter().setWidth(0, 0, "50px");
@@ -82,7 +83,6 @@ public class RecipeAdministrationView extends Composite{
 
 		@Override
 		public void onSuccess(List<opskriftDTO> result) {
-			Window.alert("Hej +    " + String.valueOf(result.size()));
 			for (int i=0; i < result.size(); i++) {
 				recipes.setText(i+1, 0, "" + result.get(i).getOpskriftID());
 				recipes.setText(i+1, 1, result.get(i).getNavn());

@@ -110,8 +110,7 @@ public class MSQLDBController implements IDBController {
 
 	@Override
 	public List<opskriftDTO> getRecipeList() throws DALException {
-		opskriftDAO.getRecipeList();
-		return null;
+		return opskriftDAO.getRecipeList();
 	}
 
 	@Override

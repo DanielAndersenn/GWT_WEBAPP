@@ -53,6 +53,12 @@ public class opskriftDTO implements Serializable{
 	public void setBeskrivelse(String beskrivelse) {
 		this.beskrivelse = beskrivelse;
 	}
+
+	@Override
+	public String toString() {
+		return "opskriftDTO [opskriftID=" + opskriftID + ", userID=" + userID + ", navn=" + navn + ", ingredienser="
+				+ ingredienser + ", beskrivelse=" + beskrivelse + "]";
+	}
 	
 	
 	
