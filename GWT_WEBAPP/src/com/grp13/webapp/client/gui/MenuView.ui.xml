@@ -7,8 +7,8 @@
 				ui:field="user_administration" />
 			<g:Hyperlink text="Recipe list" 
 				ui:field="recipe_list" />
-			<g:Hyperlink text="Add recipe" 
-				ui:field="add_recipe" />
+			<g:Hyperlink text="Recipe step list" 
+				ui:field="recipe_step_list" />
 		</g:VerticalPanel>
 
 	</g:HTMLPanel>

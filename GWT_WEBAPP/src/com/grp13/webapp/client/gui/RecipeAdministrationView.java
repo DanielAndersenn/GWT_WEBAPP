@@ -70,6 +70,9 @@ public class RecipeAdministrationView extends Composite{
 		recipes.setText(0, 3, "Beskrivelse");
 		recipes.setText(0, 4, "User ID");
 		
+		//Format add recipe panel
+		recipeID.setReadOnly(true);
+		
 		//Populate flex table
 		service.getRecipeList(new getRecipeListCallback());
 		

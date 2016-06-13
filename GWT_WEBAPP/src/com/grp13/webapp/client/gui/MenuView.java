@@ -17,7 +17,7 @@ public class MenuView extends Composite{
 	
 	@UiField Hyperlink user_administration;
 	@UiField Hyperlink recipe_list;
-	@UiField Hyperlink add_recipe;
+	@UiField Hyperlink recipe_step_list;
 	
 	WebAppServiceClientImpl main;
 	interface MenuView1UiBinder extends UiBinder<Widget, MenuView> {
@@ -40,7 +40,7 @@ public class MenuView extends Composite{
 	}
 	
 
-	@UiHandler("add_recipe")
+	@UiHandler("recipe_step_list")
 	void onShowStepsClick(ClickEvent event) {
 		main.showSteps();
 	}
