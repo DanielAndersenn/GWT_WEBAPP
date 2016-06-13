@@ -5,21 +5,21 @@ import java.io.Serializable;
 public class opskriftTrinDTO implements Serializable{
 	
 	private int opskriftID;
-	private int maengde;
+	private double maengde;
 	private int tid;
 	private int trin;
-	private String beskrivelse;
+	private String ingrediens;
+	private String enhed;
 	
 	private opskriftTrinDTO() {
 		//GWT Compliance. Not needed.
 	}
 	
-	public opskriftTrinDTO(int opskriftID, int maengde, int tid, int trin, String beskrivelse) {
+	public opskriftTrinDTO(int opskriftID, double maengde, int tid, int trin, String ingrediens, String enhed, String handling, int vaegt) {
 		this.opskriftID = opskriftID;
 		this.maengde = maengde;
 		this.tid = tid;
-		this.trin = trin;
-		this.beskrivelse = beskrivelse;			
+		this.trin = trin;	
 	}
 	
 	public int getOpskriftID() {

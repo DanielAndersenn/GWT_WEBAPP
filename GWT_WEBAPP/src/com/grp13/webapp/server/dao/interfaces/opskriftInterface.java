@@ -11,7 +11,5 @@ public interface opskriftInterface {
 	void createRecipe(opskriftDTO opskrift) throws DALException;
 	void updateRecipe(opskriftDTO opskrift) throws DALException;
 	void deleteRecipe(int a) throws DALException;
-	
-	
 
 }
