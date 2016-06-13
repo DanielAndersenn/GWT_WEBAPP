@@ -37,6 +37,7 @@ public class OpskriftImplementation implements opskriftInterface{
 			}
 		}catch(SQLException e){e.printStackTrace();}
 		System.out.println("getRecipeList END");
+		System.out.println(oList);
 		return oList;
 	}
 
@@ -102,6 +103,9 @@ public class OpskriftImplementation implements opskriftInterface{
 			e.printStackTrace();
 			System.out.println("updateOpskrift FAIL");
 		}
+		
+		if(returnMsg != 1) throw new DALException(SQLMsg);
+		
 	}
 
 	@Override

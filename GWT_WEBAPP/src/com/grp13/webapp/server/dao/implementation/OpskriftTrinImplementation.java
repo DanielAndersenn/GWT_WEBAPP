@@ -34,7 +34,7 @@ public class OpskriftTrinImplementation implements OpskriftTrinInterface{
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
 				otList.add(new opskriftTrinDTO(rs.getInt("opskrift_id"), rs.getDouble("maengde"), rs.getInt("tid"), rs.getInt("trin"), 
-											   rs.getString("ingrediens"), rs.getString("enhed"), rs.getString("handling"), rs.getBoolean("vaegt")));
+						rs.getString("ingrediens"), rs.getString("enhed"), rs.getString("handling"), rs.getBoolean("vaegt")));
 			}
 		}catch(SQLException e){e.printStackTrace();}
 		return otList;
@@ -72,19 +72,43 @@ public class OpskriftTrinImplementation implements OpskriftTrinInterface{
 			e.printStackTrace();
 			System.out.println("createRecipeStep FAIL");
 		}
-		
+
 	}
 
 	@Override
 	public void updateRecipeStep(opskriftTrinDTO opskriftTrin) throws DALException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteRecipeStep(int a) throws DALException {
-		// TODO Auto-generated method stub
-		
-	}
+		System.out.println("deleteRecipeStep START");
+		CallableStatement stmt = null;
+		String cmd = "CALL DeleteOpskriftTrin(?, ?, ?, ?)";
 
+		try {
+			stmt = conn.prepareCall(cmd);
+
+			stmt.setInt(1, a);
+			stmt.registerOutParameter(2, java.sql.Types.INTEGER);
+			stmt.registerOutParameter(3, java.sql.Types.VARCHAR);
+			stmt.registerOutParameter(4, java.sql.Types.SMALLINT);
+
+			stmt.executeUpdate();
+
+			returnMsg = stmt.getInt(2);
+			SQLMsg = stmt.getString(3);
+			SQLErr = stmt.getInt(4);
+
+			System.out.println("var returnMsg: " + returnMsg + " var SQLMsg: " + SQLMsg + " var SQLErr: " + SQLErr);
+			System.out.println("deleteOpskriftTrin END");
+		} catch (SQLException e) {
+			System.out.println("deleteOpskriftTrin FAIL");
+			throw new DALException("deleteOpskriftTrin fejlede !!!");
+		}
+
+		if(returnMsg != 1) throw new DALException(SQLMsg);
+
+	}
 }
