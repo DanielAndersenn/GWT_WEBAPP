@@ -127,7 +127,7 @@ public class OpskriftImplementation implements opskriftInterface{
 			System.out.println("deleteOpskrift END");
 		} catch (SQLException e) {
 			System.out.println("deleteOpskrift FAIL");
-			throw new DALException("deleteUser fejlede !!!");
+			throw new DALException("deleteOpskrift fejlede !!!");
 		}
 
 
