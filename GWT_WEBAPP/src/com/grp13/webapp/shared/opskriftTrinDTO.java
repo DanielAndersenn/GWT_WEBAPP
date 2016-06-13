@@ -10,16 +10,22 @@ public class opskriftTrinDTO implements Serializable{
 	private int trin;
 	private String ingrediens;
 	private String enhed;
+	private String handling;
+	private boolean vaegt;
 	
 	private opskriftTrinDTO() {
 		//GWT Compliance. Not needed.
 	}
 	
-	public opskriftTrinDTO(int opskriftID, double maengde, int tid, int trin, String ingrediens, String enhed, String handling, int vaegt) {
+	public opskriftTrinDTO(int opskriftID, double maengde, int tid, int trin, String ingrediens, String enhed, String handling, boolean vaegt) {
 		this.opskriftID = opskriftID;
 		this.maengde = maengde;
 		this.tid = tid;
-		this.trin = trin;	
+		this.trin = trin;
+		this.ingrediens = ingrediens;
+		this.enhed = enhed;
+		this.handling = handling;
+		this.vaegt = vaegt;
 	}
 	
 	public int getOpskriftID() {
@@ -28,10 +34,10 @@ public class opskriftTrinDTO implements Serializable{
 	public void setOpskriftID(int opskriftID) {
 		this.opskriftID = opskriftID;
 	}
-	public int getMaengde() {
+	public double getMaengde() {
 		return maengde;
 	}
-	public void setMaengde(int maengde) {
+	public void setMaengde(double maengde) {
 		this.maengde = maengde;
 	}
 	public int getTid() {
@@ -46,12 +52,7 @@ public class opskriftTrinDTO implements Serializable{
 	public void setTrin(int trin) {
 		this.trin = trin;
 	}
-	public String getBeskrivelse() {
-		return beskrivelse;
-	}
-	public void setBeskrivelse(String beskrivelse) {
-		this.beskrivelse = beskrivelse;
-	}
+	
 	
 	
 
