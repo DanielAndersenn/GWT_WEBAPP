@@ -46,15 +46,8 @@ public class WebAppServiceClientImpl {
 		contents.openRecipeAdministrationView();	
 	}
 
-
-
-	public Widget getContentView() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public void showSteps() {
-		// TODO Auto-generated method stub
+		contents.openRecipeStepView();
 		
 	}
 

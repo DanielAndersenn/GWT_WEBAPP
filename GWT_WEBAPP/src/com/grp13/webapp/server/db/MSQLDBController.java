@@ -133,8 +133,8 @@ public class MSQLDBController implements IDBController {
 	}
 
 	@Override
-	public List<opskriftTrinDTO> getRecipeStepList() throws DALException {
-		return opskriftTrinDAO.getRecipeStepList();
+	public List<opskriftTrinDTO> getRecipeStepList(int recipeID) throws DALException {
+		return opskriftTrinDAO.getRecipeStepList(recipeID);
 	}
 
 	@Override

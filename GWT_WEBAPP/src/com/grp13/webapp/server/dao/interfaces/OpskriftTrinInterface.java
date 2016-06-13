@@ -7,7 +7,7 @@ import com.grp13.webapp.shared.opskriftTrinDTO;
 
 public interface OpskriftTrinInterface {
 
-	List<opskriftTrinDTO> getRecipeStepList() throws DALException;
+	List<opskriftTrinDTO> getRecipeStepList(int recipeID) throws DALException;
 	void createRecipeStep(opskriftTrinDTO opskriftTrin) throws DALException;
 	void updateRecipeStep(opskriftTrinDTO opskriftTrin) throws DALException;
 	void deleteRecipeStep(int a) throws DALException;

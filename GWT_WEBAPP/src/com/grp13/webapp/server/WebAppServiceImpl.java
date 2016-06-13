@@ -11,6 +11,7 @@ import com.grp13.webapp.shared.AccessDeniedException;
 import com.grp13.webapp.shared.DALException;
 import com.grp13.webapp.shared.UserDTO;
 import com.grp13.webapp.shared.opskriftDTO;
+import com.grp13.webapp.shared.opskriftTrinDTO;
 
 public class WebAppServiceImpl extends RemoteServiceServlet implements WebAppService{
 
@@ -96,6 +97,26 @@ public class WebAppServiceImpl extends RemoteServiceServlet implements WebAppSer
 		
 		}
 		
+	}
+
+
+	@Override
+	public List<opskriftTrinDTO> getRecipeStepList(int recipeID) throws Exception {
+		List<opskriftTrinDTO> rsList = null;
+		try {
+			rsList = dbcontroller.getRecipeStepList(recipeID);
+		}catch(DALException e) {
+			throw new DALException(e.getMessage());
+		}
+		return rsList;
+	}
+
+
+	@Override
+	public void addRecipeStep(opskriftTrinDTO newStep) throws Exception {
+		try{
+			dbcontroller.createRecipeStep(newStep);;
+		}catch(DALException e){e.printStackTrace();}	
 	}
 
 	

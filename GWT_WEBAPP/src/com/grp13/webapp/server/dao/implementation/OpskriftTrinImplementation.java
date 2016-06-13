@@ -25,10 +25,10 @@ public class OpskriftTrinImplementation implements OpskriftTrinInterface{
 		this.conn = conn;
 	}
 	@Override
-	public List<opskriftTrinDTO> getRecipeStepList() throws DALException {
+	public List<opskriftTrinDTO> getRecipeStepList(int recipeID) throws DALException {
 		System.out.println("getRecipeStepList START");
 		otList = new ArrayList<opskriftTrinDTO>();
-		String sql = "SELECT * FROM opskrift_trin";
+		String sql = "SELECT * FROM opskrift_trin WHERE opskrift_id = " + recipeID;
 		try{
 			stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
