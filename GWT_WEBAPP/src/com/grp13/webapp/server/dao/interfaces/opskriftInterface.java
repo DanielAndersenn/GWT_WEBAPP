@@ -10,7 +10,7 @@ public interface opskriftInterface {
 	List<opskriftDTO> getRecipeList() throws DALException;
 	void createRecipe(opskriftDTO opskrift) throws DALException;
 	void updateRecipe(opskriftDTO opskrift) throws DALException;
-	void deleteRecipe(opskriftDTO opskrift) throws DALException;
+	void deleteRecipe(int a) throws DALException;
 	
 	
 

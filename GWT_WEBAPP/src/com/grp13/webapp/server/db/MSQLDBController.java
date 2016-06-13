@@ -123,8 +123,8 @@ public class MSQLDBController implements IDBController {
 	}
 
 	@Override
-	public void deleteRecipe(opskriftDTO opskrift) throws DALException {
-		opskriftDAO.deleteRecipe(opskrift);
+	public void deleteRecipe(int a) throws DALException {
+		opskriftDAO.deleteRecipe(a);
 		
 	}
 

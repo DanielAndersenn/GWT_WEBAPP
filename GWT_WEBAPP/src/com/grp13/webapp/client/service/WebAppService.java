@@ -16,5 +16,4 @@ public interface WebAppService extends RemoteService {
 	void addUser(UserDTO newUser) throws Exception;
 	void editUser(UserDTO editedUser) throws Exception;
 	void deleteUser(int id) throws Exception;
-
 }
