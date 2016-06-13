@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class opskriftDTO implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private int opskriftID;
 	private int userID;
 	private String navn;

@@ -5,6 +5,7 @@ import java.util.List;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.grp13.webapp.shared.DALException;
 import com.grp13.webapp.shared.UserDTO;
+import com.grp13.webapp.shared.opskriftDTO;
 
 public interface WebAppServiceAsync {
 	
@@ -13,6 +14,7 @@ public interface WebAppServiceAsync {
 	void addUser(UserDTO newUser, AsyncCallback<Void> callback);
 	void editUser(UserDTO editedUser, AsyncCallback<Void> callback);
 	void deleteUser(int user_ID, AsyncCallback<Void> callback);
+	void getRecipeList(AsyncCallback<List<opskriftDTO>> callback);
 	
 
 }
