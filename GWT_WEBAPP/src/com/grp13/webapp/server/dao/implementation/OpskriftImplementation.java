@@ -74,7 +74,7 @@ public class OpskriftImplementation implements opskriftInterface{
 	public void updateRecipe(opskriftDTO opskrift) throws DALException {
 		System.out.println("updateOpskrift START");
 		CallableStatement stmt = null;
-		String cmd = "CALL UpdateUser(?, ?, ?, ?, ?, ?, ?, ?)";
+		String cmd = "CALL UpdateOpskrift(?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			stmt = conn.prepareCall(cmd);
