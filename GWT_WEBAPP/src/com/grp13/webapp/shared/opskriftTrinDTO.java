@@ -22,10 +22,10 @@ public class opskriftTrinDTO implements Serializable{
 		this.maengde = maengde;
 		this.tid = tid;
 		this.trin = trin;
-		this.ingrediens = ingrediens;
-		this.enhed = enhed;
-		this.handling = handling;
-		this.vaegt = vaegt;
+		this.setIngrediens(ingrediens);
+		this.setEnhed(enhed);
+		this.setHandling(handling);
+		this.setVaegt(vaegt);
 	}
 	
 	public int getOpskriftID() {
@@ -51,6 +51,38 @@ public class opskriftTrinDTO implements Serializable{
 	}
 	public void setTrin(int trin) {
 		this.trin = trin;
+	}
+
+	public String getIngrediens() {
+		return ingrediens;
+	}
+
+	public void setIngrediens(String ingrediens) {
+		this.ingrediens = ingrediens;
+	}
+
+	public String getEnhed() {
+		return enhed;
+	}
+
+	public void setEnhed(String enhed) {
+		this.enhed = enhed;
+	}
+
+	public String getHandling() {
+		return handling;
+	}
+
+	public void setHandling(String handling) {
+		this.handling = handling;
+	}
+
+	public boolean isVaegt() {
+		return vaegt;
+	}
+
+	public void setVaegt(boolean vaegt) {
+		this.vaegt = vaegt;
 	}
 	
 	

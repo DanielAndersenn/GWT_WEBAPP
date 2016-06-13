@@ -124,7 +124,7 @@ public class MSQLDBController implements IDBController {
 
 	@Override
 	public void deleteRecipe(int a) throws DALException {
-		opskriftDAO.deleteRecipe(a);
+		opskriftDAO.deleteRecipe(opskrift);
 		
 	}
 
