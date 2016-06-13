@@ -1,0 +1,25 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	
+	</ui:style>
+	<g:HTMLPanel>
+		<g:VerticalPanel>
+			<g:FlexTable ui:field="recipes" styleName="FlexTable"/>
+			<g:HorizontalPanel ui:field="addPanel">
+			<g:TextBox ui:field="userID" width="54px" height="23px"></g:TextBox>
+			<g:TextBox ui:field="name" width="204px" height="23px"></g:TextBox>
+			<g:TextBox ui:field="initials" width="104px" height="23px"></g:TextBox>
+			<g:TextBox ui:field="roleID" width="54px" height="23px"></g:TextBox>
+			<g:PasswordTextBox ui:field="password" width="100px"></g:PasswordTextBox>
+			<g:Button ui:field="addUser">Add</g:Button>
+			</g:HorizontalPanel>
+			<g:HorizontalPanel ui:field="deletePanel"> 
+			<g:Label ui:field="deleteLabel" text="Enter id of user to delete: ">  </g:Label>
+			<g:TextBox ui:field="idToDelete" width="50" height="23px"> </g:TextBox>
+			<g:Button ui:field="deleteUser">Delete</g:Button>
+			</g:HorizontalPanel>
+		</g:VerticalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

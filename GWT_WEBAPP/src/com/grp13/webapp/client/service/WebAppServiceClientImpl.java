@@ -42,45 +42,20 @@ public class WebAppServiceClientImpl {
 	}
 
 
-	public void editUser() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	public void deleteUser() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 	public void showRecipes() {
-		// TODO Auto-generated method stub
-		
+		contents.openRecipeAdministrationView();	
 	}
 
-
-	public void addRecipe() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	public void deleteRecipe() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	public void showSteps() {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 	public Widget getContentView() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public void showSteps() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

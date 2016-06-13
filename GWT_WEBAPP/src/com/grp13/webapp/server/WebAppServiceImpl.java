@@ -10,6 +10,7 @@ import com.grp13.webapp.server.db.MSQLDBController;
 import com.grp13.webapp.shared.AccessDeniedException;
 import com.grp13.webapp.shared.DALException;
 import com.grp13.webapp.shared.UserDTO;
+import com.grp13.webapp.shared.opskriftDTO;
 
 public class WebAppServiceImpl extends RemoteServiceServlet implements WebAppService{
 
@@ -71,6 +72,18 @@ public class WebAppServiceImpl extends RemoteServiceServlet implements WebAppSer
 		throw new DALException(e.getMessage());
 		
 		}
+	}
+
+
+	@Override
+	public List<opskriftDTO> getRecipeList() throws Exception {
+		List<opskriftDTO> rList = null;
+		try {
+			rList = dbcontroller.getRecipeList();
+		}catch(DALException e) {
+			throw new DALException(e.getMessage());
+		}
+		return rList;
 	}
 
 	

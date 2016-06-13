@@ -34,5 +34,11 @@ public class ContentView extends Composite{
 		contents.add(buView);
 		
 	}
+	
+	public void openRecipeAdministrationView() {
+		contents.clear();
+		RecipeAdministrationView raView = new RecipeAdministrationView(service);
+		contents.add(raView);
+	}
 
 }
