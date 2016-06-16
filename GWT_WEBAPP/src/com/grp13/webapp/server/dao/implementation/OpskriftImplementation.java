@@ -21,9 +21,17 @@ public class OpskriftImplementation implements opskriftInterface{
 	String SQLMsg = "";
 	int SQLErr = 0;
 
+	/**
+	 * constructor.
+	 * @param conn
+	 */
 	public OpskriftImplementation(Connection conn) {
 		this.conn = conn;
 	}
+	
+	/**
+	 * @return all recipes from the database.
+	 */
 	@Override
 	public List<opskriftDTO> getRecipeList() throws DALException {
 		System.out.println("getRecipeList START");
@@ -41,6 +49,9 @@ public class OpskriftImplementation implements opskriftInterface{
 		return oList;
 	}
 
+	/**
+	 * @param a recipeDTO to be inserted into the database.
+	 */
 	@Override
 	public void createRecipe(opskriftDTO opskrift) throws DALException {
 		System.out.println("createRecipe START");
@@ -72,6 +83,9 @@ public class OpskriftImplementation implements opskriftInterface{
 
 	}
 
+	/**
+	 * @param a recipeDTO that is to be updated in the database.
+	 */
 	@Override
 	public void updateRecipe(opskriftDTO opskrift) throws DALException {
 		System.out.println("updateOpskrift START");
@@ -108,6 +122,9 @@ public class OpskriftImplementation implements opskriftInterface{
 		
 	}
 
+	/**
+	 * @param an integer that represents the id of the recipe in the database to be deleted.
+	 */
 	@Override
 	public void deleteRecipe(int a) throws DALException {
 		System.out.println("deleteOpskrift START");
