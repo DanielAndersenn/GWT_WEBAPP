@@ -24,16 +24,27 @@ public class UserImplementation implements UserInterface{
 	String SQLMsg = "";
 	int SQLErr = 0;
 
+	/**
+	 * contructor.
+	 * @param conn
+	 */
 	public UserImplementation(Connection conn) {
 		this.conn = conn;
 	}
 
+	/**
+	 * not yet implemented.
+	 * @param name of user to be returned.
+	 */
 	@Override
 	public UserDTO getUser(String name) throws DALException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * @return list of all users in the database.
+	 */
 	@Override
 	public List<UserDTO> getUserList() throws DALException {
 		System.out.println("getUserList START");
@@ -54,7 +65,9 @@ public class UserImplementation implements UserInterface{
 		return uList;
 	}
 
-
+	/**
+	 * @param userDTO to be added to the database.
+	 */
 	@Override
 	public void createUser(UserDTO user) throws DALException {
 		System.out.println("createUser START");
@@ -86,6 +99,9 @@ public class UserImplementation implements UserInterface{
 		
 	}
 
+	/**
+	 * @param userDTO to be updated in the database.
+	 */
 	@Override
 	public void updateUser(UserDTO user) throws DALException {
 		System.out.println("updateUser START");
@@ -119,6 +135,9 @@ public class UserImplementation implements UserInterface{
 		}	
 	}
 
+	/**
+	 * @param an integer that represents the id of the user to be deleted in the database.
+	 */
 	@Override
 	public void deleteUser(int a) throws Exception {
 		System.out.println("deleteUser START");
