@@ -21,9 +21,18 @@ public class OpskriftTrinImplementation implements OpskriftTrinInterface{
 	String SQLMsg = "";
 	int SQLErr = 0;
 
+	/**
+	 * contructor.
+	 * @param conn
+	 */
 	public OpskriftTrinImplementation(Connection conn) {
 		this.conn = conn;
 	}
+	
+	/**
+	 * @param an integer that represents the recipe of the list of steps to return.
+	 * @return list of all steps in a recipe.
+	 */
 	@Override
 	public List<opskriftTrinDTO> getRecipeStepList(int recipeID) throws DALException {
 		System.out.println("getRecipeStepList START");
@@ -40,6 +49,9 @@ public class OpskriftTrinImplementation implements OpskriftTrinInterface{
 		return otList;
 	}
 
+	/**
+	 * @param a recipestepDTO for a recipe to be added to the database.
+	 */
 	@Override
 	public void createRecipeStep(opskriftTrinDTO opskriftTrin) throws DALException {
 		System.out.println("createRecipeStep START");
@@ -75,12 +87,18 @@ public class OpskriftTrinImplementation implements OpskriftTrinInterface{
 
 	}
 
+	/**
+	 * @param a recipestepDTO to be updated in the database. not yet implemented.
+	 */
 	@Override
 	public void updateRecipeStep(opskriftTrinDTO opskriftTrin) throws DALException {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * @param an integer that represents a recipestep of a recipe to be deleted.
+	 */
 	@Override
 	public void deleteRecipeStep(int a) throws DALException {
 		System.out.println("deleteRecipeStep START");
