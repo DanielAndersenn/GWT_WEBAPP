@@ -30,6 +30,9 @@ public class MSQLDBController implements IDBController {
 	private opskriftInterface opskriftDAO;
 	private OpskriftTrinInterface opskriftTrinDAO;
 
+	/**
+	 * contructor.
+	 */
 	public MSQLDBController() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -50,32 +53,54 @@ public class MSQLDBController implements IDBController {
 		return controller;
 	}
 
+	/**
+	 * not yet implemented.
+	 * @param name of the user to be returned from database.
+	 * @return a user.
+	 */
 	@Override
 	public UserDTO getUser(String name) throws Exception {
 		
 		return userDAO.getUser(name);
 	}
 
+	/**
+	 * @return list of all users in the database.
+	 */
 	@Override
 	public List<UserDTO> getUserList() throws Exception {
 		return userDAO.getUserList();
 	}
 
+	/**
+	 * @param a user to be added to the database.
+	 */
 	@Override
 	public void createUser(UserDTO user) throws Exception {
 		userDAO.createUser(user);
 	}
 
+	/**
+	 * @param a user to be updated in the database.
+	 */
 	@Override
 	public void updateUser(UserDTO user) throws Exception {
 		userDAO.updateUser(user);
 	}
 	
+	/**
+	 * @param an integer that represents the id of the user in the database to be deleted.
+	 */
 	@Override
 	public void deleteUser(int a) throws Exception {
 		userDAO.deleteUser(a);
 	}
 
+	/**
+	 * @param the userid (here, gotten from the webpage) to validate.
+	 * @param the password (here, gotten from the webpage) to validate.
+	 * @return boolean about whether the userid and password is true.
+	 */
 	@Override
 	public boolean validateUser(String userID, String password) throws AccessDeniedException{
 		System.out.println("validateUser START");
@@ -109,46 +134,71 @@ public class MSQLDBController implements IDBController {
 		return null;
 	}
 
+	/**
+	 * @return all recipes from the database.
+	 */
 	@Override
 	public List<opskriftDTO> getRecipeList() throws DALException {
 		return opskriftDAO.getRecipeList();
 	}
 
+	/**
+	 * @param a recipeDTO to be inserted into the database.
+	 */
 	@Override
 	public void createRecipe(opskriftDTO opskrift) throws DALException {
 		opskriftDAO.createRecipe(opskrift);
 		
 	}
 
+	/**
+	 * @param a recipeDTO that is to be updated in the database.
+	 */
 	@Override
 	public void updateRecipe(opskriftDTO opskrift) throws DALException {
 		opskriftDAO.updateRecipe(opskrift);
 		
 	}
 
+	/**
+	 * @param an integer that represents the id of the recipe in the database to be deleted.
+	 */
 	@Override
 	public void deleteRecipe(int a) throws DALException {
 		opskriftDAO.deleteRecipe(a);
 		
 	}
 
+	/**
+	 * @param an integer that represents the recipe of the list of steps to return.
+	 * @return list of all steps in a recipe.
+	 */
 	@Override
 	public List<opskriftTrinDTO> getRecipeStepList(int recipeID) throws DALException {
 		return opskriftTrinDAO.getRecipeStepList(recipeID);
 	}
 
+	/**
+	 * @param a recipestepDTO for a recipe to be added to the database.
+	 */
 	@Override
 	public void createRecipeStep(opskriftTrinDTO opskriftTrin) throws DALException {
 		opskriftTrinDAO.createRecipeStep(opskriftTrin);
 		
 	}
 
+	/**
+	 * @param a recipestepDTO to be updated in the database. not yet implemented.
+	 */
 	@Override
 	public void updateRecipeStep(opskriftTrinDTO opskriftTrin) throws DALException {
 		opskriftTrinDAO.updateRecipeStep(opskriftTrin);
 		
 	}
 
+	/**
+	 * @param an integer that represents a recipestep of a recipe to be deleted.
+	 */
 	@Override
 	public void deleteRecipeStep(int a) throws DALException {
 		opskriftTrinDAO.deleteRecipeStep(a);
